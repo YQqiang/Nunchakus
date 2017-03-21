@@ -1,0 +1,24 @@
+PODS:
+  - Kanna (2.1.1)
+  - MJRefresh (3.1.12)
+  - SideMenu (2.1.5)
+  - SnapKit (3.1.2)
+  - SVProgressHUD (2.1.2)
+
+DEPENDENCIES:
+  - Kanna
+  - MJRefresh
+  - SideMenu
+  - SnapKit
+  - SVProgressHUD
+
+SPEC CHECKSUMS:
+  Kanna: 9b4b086c218703f2b94f5b21a466217dd2f9332e
+  MJRefresh: b96cdb21c4aa75a7b07654311ab2f315c497e806
+  SideMenu: bcd2d7b7d4395af088e213cebd11c3ac7d958f5a
+  SnapKit: 12b24f569cb7c143acc9c22b9d91b23e7b1c84a2
+  SVProgressHUD: c404a55d78acbeb7ebb78b76d3faf986475a6994
+
+PODFILE CHECKSUM: db965c47b51973fdf0f185aaf116d6f4e910d0c3
+
+COCOAPODS: 1.2.0.beta.1

@@ -7,13 +7,20 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		29E26B00B249C7CD6F488C25 /* Pods_Nunchakus.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 0E54E0C97A53054B900189A6 /* Pods_Nunchakus.framework */; };
 		2F77C4161E80F1230055D364 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2F77C4151E80F1230055D364 /* AppDelegate.swift */; };
-		2F77C4181E80F1230055D364 /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2F77C4171E80F1230055D364 /* ViewController.swift */; };
-		2F77C41B1E80F1230055D364 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 2F77C4191E80F1230055D364 /* Main.storyboard */; };
 		2F77C41D1E80F1230055D364 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 2F77C41C1E80F1230055D364 /* Assets.xcassets */; };
 		2F77C4201E80F1230055D364 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 2F77C41E1E80F1230055D364 /* LaunchScreen.storyboard */; };
 		2F77C42B1E80F1230055D364 /* NunchakusTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2F77C42A1E80F1230055D364 /* NunchakusTests.swift */; };
 		2F77C4361E80F1230055D364 /* NunchakusUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2F77C4351E80F1230055D364 /* NunchakusUITests.swift */; };
+		C707A3931E814FA000278E40 /* BaseViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = C707A3921E814FA000278E40 /* BaseViewController.swift */; };
+		C707A3951E814FBC00278E40 /* BaseNavigationController.swift in Sources */ = {isa = PBXBuildFile; fileRef = C707A3941E814FBC00278E40 /* BaseNavigationController.swift */; };
+		C707A3981E81504500278E40 /* UIColor-Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = C707A3961E81504500278E40 /* UIColor-Extension.swift */; };
+		C707A3991E81504500278E40 /* UIImage-Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = C707A3971E81504500278E40 /* UIImage-Extension.swift */; };
+		C707A39B1E81530600278E40 /* MainTabBarController.swift in Sources */ = {isa = PBXBuildFile; fileRef = C707A39A1E81530600278E40 /* MainTabBarController.swift */; };
+		C707A39D1E81532000278E40 /* SelfieViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = C707A39C1E81532000278E40 /* SelfieViewController.swift */; };
+		C707A39F1E81533300278E40 /* StageViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = C707A39E1E81533300278E40 /* StageViewController.swift */; };
+		C707A3A11E81534100278E40 /* TeachingViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = C707A3A01E81534100278E40 /* TeachingViewController.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -34,10 +41,9 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
+		0E54E0C97A53054B900189A6 /* Pods_Nunchakus.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_Nunchakus.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		2F77C4121E80F1230055D364 /* Nunchakus.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Nunchakus.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		2F77C4151E80F1230055D364 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
-		2F77C4171E80F1230055D364 /* ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
-		2F77C41A1E80F1230055D364 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
 		2F77C41C1E80F1230055D364 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		2F77C41F1E80F1230055D364 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		2F77C4211E80F1230055D364 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
@@ -47,6 +53,16 @@
 		2F77C4311E80F1230055D364 /* NunchakusUITests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = NunchakusUITests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		2F77C4351E80F1230055D364 /* NunchakusUITests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NunchakusUITests.swift; sourceTree = "<group>"; };
 		2F77C4371E80F1230055D364 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		93C39ADC4E74FA06CE9DB69A /* Pods-Nunchakus.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Nunchakus.release.xcconfig"; path = "Pods/Target Support Files/Pods-Nunchakus/Pods-Nunchakus.release.xcconfig"; sourceTree = "<group>"; };
+		C707A3921E814FA000278E40 /* BaseViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = BaseViewController.swift; sourceTree = "<group>"; };
+		C707A3941E814FBC00278E40 /* BaseNavigationController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = BaseNavigationController.swift; sourceTree = "<group>"; };
+		C707A3961E81504500278E40 /* UIColor-Extension.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "UIColor-Extension.swift"; sourceTree = "<group>"; };
+		C707A3971E81504500278E40 /* UIImage-Extension.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "UIImage-Extension.swift"; sourceTree = "<group>"; };
+		C707A39A1E81530600278E40 /* MainTabBarController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MainTabBarController.swift; sourceTree = "<group>"; };
+		C707A39C1E81532000278E40 /* SelfieViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SelfieViewController.swift; sourceTree = "<group>"; };
+		C707A39E1E81533300278E40 /* StageViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = StageViewController.swift; sourceTree = "<group>"; };
+		C707A3A01E81534100278E40 /* TeachingViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TeachingViewController.swift; sourceTree = "<group>"; };
+		F5DBD283D48B198A8D6CD32A /* Pods-Nunchakus.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Nunchakus.debug.xcconfig"; path = "Pods/Target Support Files/Pods-Nunchakus/Pods-Nunchakus.debug.xcconfig"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -54,6 +70,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				29E26B00B249C7CD6F488C25 /* Pods_Nunchakus.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -77,10 +94,13 @@
 		2F77C4091E80F1230055D364 = {
 			isa = PBXGroup;
 			children = (
+				C707A3751E814EE400278E40 /* Nunchakus */,
 				2F77C4141E80F1230055D364 /* Nunchakus */,
 				2F77C4291E80F1230055D364 /* NunchakusTests */,
 				2F77C4341E80F1230055D364 /* NunchakusUITests */,
 				2F77C4131E80F1230055D364 /* Products */,
+				88BE2B38D6BDBD62E29AD299 /* Pods */,
+				A0AB7405D94DB35C2AAD8190 /* Frameworks */,
 			);
 			sourceTree = "<group>";
 		};
@@ -98,8 +118,6 @@
 			isa = PBXGroup;
 			children = (
 				2F77C4151E80F1230055D364 /* AppDelegate.swift */,
-				2F77C4171E80F1230055D364 /* ViewController.swift */,
-				2F77C4191E80F1230055D364 /* Main.storyboard */,
 				2F77C41C1E80F1230055D364 /* Assets.xcassets */,
 				2F77C41E1E80F1230055D364 /* LaunchScreen.storyboard */,
 				2F77C4211E80F1230055D364 /* Info.plist */,
@@ -125,6 +143,264 @@
 			path = NunchakusUITests;
 			sourceTree = "<group>";
 		};
+		88BE2B38D6BDBD62E29AD299 /* Pods */ = {
+			isa = PBXGroup;
+			children = (
+				F5DBD283D48B198A8D6CD32A /* Pods-Nunchakus.debug.xcconfig */,
+				93C39ADC4E74FA06CE9DB69A /* Pods-Nunchakus.release.xcconfig */,
+			);
+			name = Pods;
+			sourceTree = "<group>";
+		};
+		A0AB7405D94DB35C2AAD8190 /* Frameworks */ = {
+			isa = PBXGroup;
+			children = (
+				0E54E0C97A53054B900189A6 /* Pods_Nunchakus.framework */,
+			);
+			name = Frameworks;
+			sourceTree = "<group>";
+		};
+		C707A3751E814EE400278E40 /* Nunchakus */ = {
+			isa = PBXGroup;
+			children = (
+				C707A3761E814EE400278E40 /* Base */,
+				C707A37A1E814EE400278E40 /* Main */,
+				C707A37E1E814EE400278E40 /* Selfie */,
+				C707A3821E814EE400278E40 /* Services */,
+				C707A3861E814EE400278E40 /* Stage */,
+				C707A38A1E814EE400278E40 /* Teaching */,
+				C707A38E1E814EE400278E40 /* Utils */,
+			);
+			name = Nunchakus;
+			path = Nunchakus/Nunchakus;
+			sourceTree = "<group>";
+		};
+		C707A3761E814EE400278E40 /* Base */ = {
+			isa = PBXGroup;
+			children = (
+				C707A3771E814EE400278E40 /* Model */,
+				C707A3781E814EE400278E40 /* ViewController */,
+				C707A3791E814EE400278E40 /* ViewModel */,
+			);
+			path = Base;
+			sourceTree = "<group>";
+		};
+		C707A3771E814EE400278E40 /* Model */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = Model;
+			sourceTree = "<group>";
+		};
+		C707A3781E814EE400278E40 /* ViewController */ = {
+			isa = PBXGroup;
+			children = (
+				C707A3921E814FA000278E40 /* BaseViewController.swift */,
+				C707A3941E814FBC00278E40 /* BaseNavigationController.swift */,
+			);
+			path = ViewController;
+			sourceTree = "<group>";
+		};
+		C707A3791E814EE400278E40 /* ViewModel */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = ViewModel;
+			sourceTree = "<group>";
+		};
+		C707A37A1E814EE400278E40 /* Main */ = {
+			isa = PBXGroup;
+			children = (
+				C707A37B1E814EE400278E40 /* Model */,
+				C707A37C1E814EE400278E40 /* ViewController */,
+				C707A37D1E814EE400278E40 /* ViewModel */,
+			);
+			path = Main;
+			sourceTree = "<group>";
+		};
+		C707A37B1E814EE400278E40 /* Model */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = Model;
+			sourceTree = "<group>";
+		};
+		C707A37C1E814EE400278E40 /* ViewController */ = {
+			isa = PBXGroup;
+			children = (
+				C707A39A1E81530600278E40 /* MainTabBarController.swift */,
+			);
+			path = ViewController;
+			sourceTree = "<group>";
+		};
+		C707A37D1E814EE400278E40 /* ViewModel */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = ViewModel;
+			sourceTree = "<group>";
+		};
+		C707A37E1E814EE400278E40 /* Selfie */ = {
+			isa = PBXGroup;
+			children = (
+				C707A37F1E814EE400278E40 /* Model */,
+				C707A3801E814EE400278E40 /* ViewController */,
+				C707A3811E814EE400278E40 /* ViewModel */,
+			);
+			path = Selfie;
+			sourceTree = "<group>";
+		};
+		C707A37F1E814EE400278E40 /* Model */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = Model;
+			sourceTree = "<group>";
+		};
+		C707A3801E814EE400278E40 /* ViewController */ = {
+			isa = PBXGroup;
+			children = (
+				C707A39C1E81532000278E40 /* SelfieViewController.swift */,
+			);
+			path = ViewController;
+			sourceTree = "<group>";
+		};
+		C707A3811E814EE400278E40 /* ViewModel */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = ViewModel;
+			sourceTree = "<group>";
+		};
+		C707A3821E814EE400278E40 /* Services */ = {
+			isa = PBXGroup;
+			children = (
+				C707A3831E814EE400278E40 /* Model */,
+				C707A3841E814EE400278E40 /* ViewController */,
+				C707A3851E814EE400278E40 /* ViewModel */,
+			);
+			path = Services;
+			sourceTree = "<group>";
+		};
+		C707A3831E814EE400278E40 /* Model */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = Model;
+			sourceTree = "<group>";
+		};
+		C707A3841E814EE400278E40 /* ViewController */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = ViewController;
+			sourceTree = "<group>";
+		};
+		C707A3851E814EE400278E40 /* ViewModel */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = ViewModel;
+			sourceTree = "<group>";
+		};
+		C707A3861E814EE400278E40 /* Stage */ = {
+			isa = PBXGroup;
+			children = (
+				C707A3871E814EE400278E40 /* Model */,
+				C707A3881E814EE400278E40 /* ViewController */,
+				C707A3891E814EE400278E40 /* ViewModel */,
+			);
+			path = Stage;
+			sourceTree = "<group>";
+		};
+		C707A3871E814EE400278E40 /* Model */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = Model;
+			sourceTree = "<group>";
+		};
+		C707A3881E814EE400278E40 /* ViewController */ = {
+			isa = PBXGroup;
+			children = (
+				C707A39E1E81533300278E40 /* StageViewController.swift */,
+			);
+			path = ViewController;
+			sourceTree = "<group>";
+		};
+		C707A3891E814EE400278E40 /* ViewModel */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = ViewModel;
+			sourceTree = "<group>";
+		};
+		C707A38A1E814EE400278E40 /* Teaching */ = {
+			isa = PBXGroup;
+			children = (
+				C707A38B1E814EE400278E40 /* Model */,
+				C707A38C1E814EE400278E40 /* ViewController */,
+				C707A38D1E814EE400278E40 /* ViewModel */,
+			);
+			path = Teaching;
+			sourceTree = "<group>";
+		};
+		C707A38B1E814EE400278E40 /* Model */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = Model;
+			sourceTree = "<group>";
+		};
+		C707A38C1E814EE400278E40 /* ViewController */ = {
+			isa = PBXGroup;
+			children = (
+				C707A3A01E81534100278E40 /* TeachingViewController.swift */,
+			);
+			path = ViewController;
+			sourceTree = "<group>";
+		};
+		C707A38D1E814EE400278E40 /* ViewModel */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = ViewModel;
+			sourceTree = "<group>";
+		};
+		C707A38E1E814EE400278E40 /* Utils */ = {
+			isa = PBXGroup;
+			children = (
+				C707A38F1E814EE400278E40 /* Category */,
+				C707A3901E814EE400278E40 /* ViewController */,
+				C707A3911E814EE400278E40 /* ViewModel */,
+			);
+			path = Utils;
+			sourceTree = "<group>";
+		};
+		C707A38F1E814EE400278E40 /* Category */ = {
+			isa = PBXGroup;
+			children = (
+				C707A3961E81504500278E40 /* UIColor-Extension.swift */,
+				C707A3971E81504500278E40 /* UIImage-Extension.swift */,
+			);
+			name = Category;
+			path = Model;
+			sourceTree = "<group>";
+		};
+		C707A3901E814EE400278E40 /* ViewController */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = ViewController;
+			sourceTree = "<group>";
+		};
+		C707A3911E814EE400278E40 /* ViewModel */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = ViewModel;
+			sourceTree = "<group>";
+		};
 /* End PBXGroup section */
 
 /* Begin PBXNativeTarget section */
@@ -132,9 +408,12 @@
 			isa = PBXNativeTarget;
 			buildConfigurationList = 2F77C43A1E80F1230055D364 /* Build configuration list for PBXNativeTarget "Nunchakus" */;
 			buildPhases = (
+				D4DF3F013F495F9162102F7A /* [CP] Check Pods Manifest.lock */,
 				2F77C40E1E80F1230055D364 /* Sources */,
 				2F77C40F1E80F1230055D364 /* Frameworks */,
 				2F77C4101E80F1230055D364 /* Resources */,
+				788A6D865A3CF771DAD3C434 /* [CP] Embed Pods Frameworks */,
+				1CE8AEB2EDBDA6D147B7FD9E /* [CP] Copy Pods Resources */,
 			);
 			buildRules = (
 			);
@@ -234,7 +513,6 @@
 			files = (
 				2F77C4201E80F1230055D364 /* LaunchScreen.storyboard in Resources */,
 				2F77C41D1E80F1230055D364 /* Assets.xcassets in Resources */,
-				2F77C41B1E80F1230055D364 /* Main.storyboard in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -254,13 +532,68 @@
 		};
 /* End PBXResourcesBuildPhase section */
 
+/* Begin PBXShellScriptBuildPhase section */
+		1CE8AEB2EDBDA6D147B7FD9E /* [CP] Copy Pods Resources */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+			);
+			name = "[CP] Copy Pods Resources";
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "\"${SRCROOT}/Pods/Target Support Files/Pods-Nunchakus/Pods-Nunchakus-resources.sh\"\n";
+			showEnvVarsInLog = 0;
+		};
+		788A6D865A3CF771DAD3C434 /* [CP] Embed Pods Frameworks */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+			);
+			name = "[CP] Embed Pods Frameworks";
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "\"${SRCROOT}/Pods/Target Support Files/Pods-Nunchakus/Pods-Nunchakus-frameworks.sh\"\n";
+			showEnvVarsInLog = 0;
+		};
+		D4DF3F013F495F9162102F7A /* [CP] Check Pods Manifest.lock */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+			);
+			name = "[CP] Check Pods Manifest.lock";
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "diff \"${PODS_ROOT}/../Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [ $? != 0 ] ; then\n    # print error to STDERR\n    echo \"error: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\" >&2\n    exit 1\nfi\n";
+			showEnvVarsInLog = 0;
+		};
+/* End PBXShellScriptBuildPhase section */
+
 /* Begin PBXSourcesBuildPhase section */
 		2F77C40E1E80F1230055D364 /* Sources */ = {
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				2F77C4181E80F1230055D364 /* ViewController.swift in Sources */,
 				2F77C4161E80F1230055D364 /* AppDelegate.swift in Sources */,
+				C707A3981E81504500278E40 /* UIColor-Extension.swift in Sources */,
+				C707A39D1E81532000278E40 /* SelfieViewController.swift in Sources */,
+				C707A3A11E81534100278E40 /* TeachingViewController.swift in Sources */,
+				C707A39B1E81530600278E40 /* MainTabBarController.swift in Sources */,
+				C707A3931E814FA000278E40 /* BaseViewController.swift in Sources */,
+				C707A3951E814FBC00278E40 /* BaseNavigationController.swift in Sources */,
+				C707A3991E81504500278E40 /* UIImage-Extension.swift in Sources */,
+				C707A39F1E81533300278E40 /* StageViewController.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -296,14 +629,6 @@
 /* End PBXTargetDependency section */
 
 /* Begin PBXVariantGroup section */
-		2F77C4191E80F1230055D364 /* Main.storyboard */ = {
-			isa = PBXVariantGroup;
-			children = (
-				2F77C41A1E80F1230055D364 /* Base */,
-			);
-			name = Main.storyboard;
-			sourceTree = "<group>";
-		};
 		2F77C41E1E80F1230055D364 /* LaunchScreen.storyboard */ = {
 			isa = PBXVariantGroup;
 			children = (
@@ -410,6 +735,7 @@
 		};
 		2F77C43B1E80F1230055D364 /* Debug */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = F5DBD283D48B198A8D6CD32A /* Pods-Nunchakus.debug.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				INFOPLIST_FILE = Nunchakus/Info.plist;
@@ -422,6 +748,7 @@
 		};
 		2F77C43C1E80F1230055D364 /* Release */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = 93C39ADC4E74FA06CE9DB69A /* Pods-Nunchakus.release.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				INFOPLIST_FILE = Nunchakus/Info.plist;
@@ -505,6 +832,7 @@
 				2F77C43C1E80F1230055D364 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 		2F77C43D1E80F1230055D364 /* Build configuration list for PBXNativeTarget "NunchakusTests" */ = {
 			isa = XCConfigurationList;
@@ -513,6 +841,7 @@
 				2F77C43F1E80F1230055D364 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 		2F77C4401E80F1230055D364 /* Build configuration list for PBXNativeTarget "NunchakusUITests" */ = {
 			isa = XCConfigurationList;
@@ -521,6 +850,7 @@
 				2F77C4421E80F1230055D364 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
 	};

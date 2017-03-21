@@ -8,5 +8,6 @@ pod 'SnapKit'
 pod 'SVProgressHUD'
 pod 'SideMenu'
 pod 'MJRefresh'
+pod 'Kanna'
 
 end

@@ -12,7 +12,7 @@ class MainTabBarController: UITabBarController {
 
     override func viewDidLoad() {
         super.viewDidLoad()
-
+        tabBar.isTranslucent = false
         // Do any additional setup after loading the view.
         view.backgroundColor = UIColor.white
         let selfie = SelfieViewController()

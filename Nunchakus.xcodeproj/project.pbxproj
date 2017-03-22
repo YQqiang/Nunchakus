@@ -30,6 +30,7 @@
 		C707A39D1E81532000278E40 /* SelfieViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = C707A39C1E81532000278E40 /* SelfieViewController.swift */; };
 		C707A39F1E81533300278E40 /* StageViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = C707A39E1E81533300278E40 /* StageViewController.swift */; };
 		C707A3A11E81534100278E40 /* TeachingViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = C707A3A01E81534100278E40 /* TeachingViewController.swift */; };
+		C717B0FD1E82C2A600B99D59 /* Common.swift in Sources */ = {isa = PBXBuildFile; fileRef = C717B0FC1E82C2A600B99D59 /* Common.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -80,6 +81,7 @@
 		C707A39C1E81532000278E40 /* SelfieViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SelfieViewController.swift; sourceTree = "<group>"; };
 		C707A39E1E81533300278E40 /* StageViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = StageViewController.swift; sourceTree = "<group>"; };
 		C707A3A01E81534100278E40 /* TeachingViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TeachingViewController.swift; sourceTree = "<group>"; };
+		C717B0FC1E82C2A600B99D59 /* Common.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Common.swift; sourceTree = "<group>"; };
 		F5DBD283D48B198A8D6CD32A /* Pods-Nunchakus.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Nunchakus.debug.xcconfig"; path = "Pods/Target Support Files/Pods-Nunchakus/Pods-Nunchakus.debug.xcconfig"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
@@ -399,6 +401,7 @@
 				C707A38F1E814EE400278E40 /* Category */,
 				C707A3901E814EE400278E40 /* ViewController */,
 				C707A3911E814EE400278E40 /* ViewModel */,
+				C717B0FC1E82C2A600B99D59 /* Common.swift */,
 			);
 			path = Utils;
 			sourceTree = "<group>";
@@ -627,6 +630,7 @@
 				C707A3931E814FA000278E40 /* BaseViewController.swift in Sources */,
 				2F185BB41E8212B200EDD62B /* EmptyDataView.swift in Sources */,
 				C707A3951E814FBC00278E40 /* BaseNavigationController.swift in Sources */,
+				C717B0FD1E82C2A600B99D59 /* Common.swift in Sources */,
 				2F185BBC1E82271F00EDD62B /* VideoService.swift in Sources */,
 				C707A3991E81504500278E40 /* UIImage-Extension.swift in Sources */,
 				C707A39F1E81533300278E40 /* StageViewController.swift in Sources */,

@@ -38,14 +38,23 @@ class VideoCell: UITableViewCell {
 
 extension VideoCell {
     fileprivate func createUI() {
-        let superView = contentView
+        let bgView = UIView()
+        bgView.layer.cornerRadius = 5
+        contentView.addSubview(bgView)
+        bgView.snp.makeConstraints { (make) in
+            make.top.equalTo(contentView)
+            make.left.equalTo(contentView).offset(8)
+            make.bottom.right.equalTo(contentView).offset(-8)
+        }
+        
+        let superView = bgView
         superView.addSubview(imgV)
         imgV.addSubview(timeLabel)
         superView.addSubview(titleLabel)
         
         imgV.snp.makeConstraints { (make) in
             make.top.left.right.equalTo(superView)
-            make.height.equalTo(240)
+            make.height.equalTo(videoHeight)
         }
         
         timeLabel.numberOfLines = 1

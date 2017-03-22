@@ -34,9 +34,11 @@ extension SelfieViewController {
         tableView.delegate = self
         tableView.dataSource = self
         tableView.rowHeight = UITableViewAutomaticDimension
-        tableView.estimatedRowHeight = 265
+        tableView.estimatedRowHeight = CGFloat(videoHeight + 22.0)
+        tableView.separatorStyle = .none
         tableView.register(VideoCell.self, forCellReuseIdentifier: videoCellID)
         view.addSubview(tableView)
+        tableView.contentInset = UIEdgeInsetsMake(8, 0, 0, 0)
         tableView.snp.makeConstraints { (make) in
             make.edges.equalTo(self.view)
         }
@@ -81,7 +83,9 @@ extension SelfieViewController {
 
 // MARK:- UITableViewDelegate
 extension SelfieViewController: UITableViewDelegate {
-    
+    func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
+        tableView.deselectRow(at: indexPath, animated: false)
+    }
 }
 
 // MARK: - UITableViewDataSource

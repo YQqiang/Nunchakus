@@ -7,13 +7,29 @@
 //
 
 import UIKit
+import RxSwift
+import EVReflection
+import Kanna
 
 class SelfieViewController: BaseViewController {
-
+    let disposeBag = DisposeBag()
     override func viewDidLoad() {
         super.viewDidLoad()
-
         // Do any additional setup after loading the view.
+        zipaiServiceProvider.request(.test).mapString().subscribe(onNext: { (html) in
+            if let doc = HTML(html: html, encoding: .utf8) {
+                let ul = doc.xpath("//div[@class='lbox']/ul/li")
+                var items: [SelfieModel] = []
+                for li in ul {
+                    let model = SelfieModel(html: li)
+                    items.append(model)
+                }
+            }
+        }, onError: { (error) in
+            print(error)
+        }, onCompleted: nil) { 
+            
+        }.addDisposableTo(disposeBag)
     }
 
     override func didReceiveMemoryWarning() {

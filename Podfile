@@ -9,5 +9,10 @@ pod 'SVProgressHUD'
 pod 'SideMenu'
 pod 'MJRefresh'
 pod 'Kanna'
+pod 'Toaster'
+pod 'EVReflection/XML'
+pod 'RxSwift'
+pod 'RxCocoa'
+pod 'Moya/RxSwift'
 
 end

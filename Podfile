@@ -14,5 +14,6 @@ pod 'EVReflection/XML'
 pod 'RxSwift'
 pod 'RxCocoa'
 pod 'Moya/RxSwift'
+pod 'Kingfisher'
 
 end

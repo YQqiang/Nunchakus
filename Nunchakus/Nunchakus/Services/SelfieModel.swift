@@ -9,13 +9,14 @@
 import UIKit
 import Kanna
 
-class SelfieModel: NSObject {
+class SelfieModel: BaseModel {
     var title: String?
     var video: String?
     var img: String?
     var time: String?
     
-    init(html: XMLElement) {
+    override init(html: XMLElement) {
+        super.init(html: html)
         self.time = html.at_xpath("span")?.content
         guard let a = html.at_xpath("a") else {
             return

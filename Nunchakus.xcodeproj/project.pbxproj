@@ -14,6 +14,8 @@
 		2F185BBA1E8225AD00EDD62B /* PublicTool.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2F185BB91E8225AD00EDD62B /* PublicTool.swift */; };
 		2F185BBC1E82271F00EDD62B /* ZipaiService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2F185BBB1E82271F00EDD62B /* ZipaiService.swift */; };
 		2F185BC01E824CDF00EDD62B /* SelfieModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2F185BBF1E824CDF00EDD62B /* SelfieModel.swift */; };
+		2F185BC21E829CF800EDD62B /* BaseModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2F185BC11E829CF800EDD62B /* BaseModel.swift */; };
+		2F185BC51E829F6800EDD62B /* Observable+Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2F185BC31E829F6800EDD62B /* Observable+Extension.swift */; };
 		2F77C4161E80F1230055D364 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2F77C4151E80F1230055D364 /* AppDelegate.swift */; };
 		2F77C41D1E80F1230055D364 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 2F77C41C1E80F1230055D364 /* Assets.xcassets */; };
 		2F77C4201E80F1230055D364 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 2F77C41E1E80F1230055D364 /* LaunchScreen.storyboard */; };
@@ -54,6 +56,8 @@
 		2F185BB91E8225AD00EDD62B /* PublicTool.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PublicTool.swift; sourceTree = "<group>"; };
 		2F185BBB1E82271F00EDD62B /* ZipaiService.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ZipaiService.swift; sourceTree = "<group>"; };
 		2F185BBF1E824CDF00EDD62B /* SelfieModel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = SelfieModel.swift; path = Nunchakus/Nunchakus/Services/SelfieModel.swift; sourceTree = SOURCE_ROOT; };
+		2F185BC11E829CF800EDD62B /* BaseModel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = BaseModel.swift; path = Nunchakus/Nunchakus/Services/BaseModel.swift; sourceTree = SOURCE_ROOT; };
+		2F185BC31E829F6800EDD62B /* Observable+Extension.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "Observable+Extension.swift"; sourceTree = "<group>"; };
 		2F77C4121E80F1230055D364 /* Nunchakus.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Nunchakus.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		2F77C4151E80F1230055D364 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		2F77C41C1E80F1230055D364 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
@@ -200,6 +204,7 @@
 		C707A3771E814EE400278E40 /* Model */ = {
 			isa = PBXGroup;
 			children = (
+				2F185BC11E829CF800EDD62B /* BaseModel.swift */,
 			);
 			path = Model;
 			sourceTree = "<group>";
@@ -398,6 +403,7 @@
 		C707A38F1E814EE400278E40 /* Category */ = {
 			isa = PBXGroup;
 			children = (
+				2F185BC31E829F6800EDD62B /* Observable+Extension.swift */,
 				C707A3961E81504500278E40 /* UIColor-Extension.swift */,
 				C707A3971E81504500278E40 /* UIImage-Extension.swift */,
 			);
@@ -609,8 +615,10 @@
 				C707A39D1E81532000278E40 /* SelfieViewController.swift in Sources */,
 				C707A3A11E81534100278E40 /* TeachingViewController.swift in Sources */,
 				2F185BC01E824CDF00EDD62B /* SelfieModel.swift in Sources */,
+				2F185BC21E829CF800EDD62B /* BaseModel.swift in Sources */,
 				2F185BB81E82254F00EDD62B /* Hud.swift in Sources */,
 				C707A39B1E81530600278E40 /* MainTabBarController.swift in Sources */,
+				2F185BC51E829F6800EDD62B /* Observable+Extension.swift in Sources */,
 				2F185BBA1E8225AD00EDD62B /* PublicTool.swift in Sources */,
 				C707A3931E814FA000278E40 /* BaseViewController.swift in Sources */,
 				2F185BB41E8212B200EDD62B /* EmptyDataView.swift in Sources */,

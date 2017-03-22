@@ -16,7 +16,7 @@ class SelfieViewController: BaseViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         // Do any additional setup after loading the view.
-        zipaiServiceProvider.request(.test).mapString().subscribe(onNext: { (html) in
+        zipaiServiceProvider.request(.test).mapString().showAPIErrorToast().subscribe(onNext: { (html) in
             if let doc = HTML(html: html, encoding: .utf8) {
                 let ul = doc.xpath("//div[@class='lbox']/ul/li")
                 var items: [SelfieModel] = []
@@ -27,8 +27,7 @@ class SelfieViewController: BaseViewController {
             }
         }, onError: { (error) in
             print(error)
-        }, onCompleted: nil) { 
-            
+        }, onCompleted: nil) {
         }.addDisposableTo(disposeBag)
     }
 

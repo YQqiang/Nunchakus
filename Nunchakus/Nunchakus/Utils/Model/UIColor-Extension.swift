@@ -53,4 +53,12 @@ extension UIColor {
     class func lineColor() -> UIColor {
         return .color(R: 222, G: 222, B: 222)
     }
+    /// 全局配色
+    class func globalColor() -> UIColor {
+        return UIColor(colorHex: 0xea9518)
+    }
+    /// 图片非选中颜色
+    class func deselectColor() -> UIColor {
+        return UIColor(colorHex: 0x707070)
+    }
 }

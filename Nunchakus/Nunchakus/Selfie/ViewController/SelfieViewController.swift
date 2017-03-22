@@ -39,6 +39,7 @@ extension SelfieViewController {
         tableView.register(VideoCell.self, forCellReuseIdentifier: videoCellID)
         view.addSubview(tableView)
         tableView.contentInset = UIEdgeInsetsMake(8, 0, 0, 0)
+        tableView.contentOffset = CGPoint(x: 0, y: -8)
         tableView.snp.makeConstraints { (make) in
             make.edges.equalTo(self.view)
         }

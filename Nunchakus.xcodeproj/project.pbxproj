@@ -8,6 +8,7 @@
 
 /* Begin PBXBuildFile section */
 		29E26B00B249C7CD6F488C25 /* Pods_Nunchakus.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 0E54E0C97A53054B900189A6 /* Pods_Nunchakus.framework */; };
+		2F185BB41E8212B200EDD62B /* EmptyDataView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2F185BB31E8212B200EDD62B /* EmptyDataView.swift */; };
 		2F77C4161E80F1230055D364 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2F77C4151E80F1230055D364 /* AppDelegate.swift */; };
 		2F77C41D1E80F1230055D364 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 2F77C41C1E80F1230055D364 /* Assets.xcassets */; };
 		2F77C4201E80F1230055D364 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 2F77C41E1E80F1230055D364 /* LaunchScreen.storyboard */; };
@@ -42,6 +43,7 @@
 
 /* Begin PBXFileReference section */
 		0E54E0C97A53054B900189A6 /* Pods_Nunchakus.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_Nunchakus.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		2F185BB31E8212B200EDD62B /* EmptyDataView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = EmptyDataView.swift; sourceTree = "<group>"; };
 		2F77C4121E80F1230055D364 /* Nunchakus.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Nunchakus.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		2F77C4151E80F1230055D364 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		2F77C41C1E80F1230055D364 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
@@ -197,6 +199,7 @@
 			children = (
 				C707A3921E814FA000278E40 /* BaseViewController.swift */,
 				C707A3941E814FBC00278E40 /* BaseNavigationController.swift */,
+				2F185BB31E8212B200EDD62B /* EmptyDataView.swift */,
 			);
 			path = ViewController;
 			sourceTree = "<group>";
@@ -591,6 +594,7 @@
 				C707A3A11E81534100278E40 /* TeachingViewController.swift in Sources */,
 				C707A39B1E81530600278E40 /* MainTabBarController.swift in Sources */,
 				C707A3931E814FA000278E40 /* BaseViewController.swift in Sources */,
+				2F185BB41E8212B200EDD62B /* EmptyDataView.swift in Sources */,
 				C707A3951E814FBC00278E40 /* BaseNavigationController.swift in Sources */,
 				C707A3991E81504500278E40 /* UIImage-Extension.swift in Sources */,
 				C707A39F1E81533300278E40 /* StageViewController.swift in Sources */,

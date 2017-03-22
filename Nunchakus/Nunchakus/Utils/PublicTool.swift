@@ -8,7 +8,7 @@
 
 import Foundation
 
-enum videoStype {
+enum VideoType {
     case zipai      // 棍友自拍
     case biaoyan    // 舞台表演
     case jiaoxue    // 棍法教学

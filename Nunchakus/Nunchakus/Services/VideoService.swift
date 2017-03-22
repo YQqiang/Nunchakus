@@ -1,5 +1,5 @@
 //
-//  ZipaiService.swift
+//  VideoService.swift
 //  Nunchakus
 //
 //  Created by sungrow on 2017/3/22.
@@ -9,17 +9,20 @@
 import Foundation
 import Moya
 
-enum ZipaiService: TargetType {
-    case test
+enum VideoService: TargetType {
+    case video(type: VideoType, page: Int)
 }
 
-extension ZipaiService {
+extension VideoService {
     var baseURL: URL {
         return URL(string: API_PRO)!
     }
     
     var path: String {
-        return "/zipai/1/"
+        switch self {
+        case .video(type: let type, page: let curPage):
+            return "/\(type)/\(curPage)/"
+        }
     }
     
     var method: Moya.Method {
@@ -43,9 +46,9 @@ extension ZipaiService {
     }
 }
 
-private let endPointClosure = { (target: ZipaiService) -> Endpoint<ZipaiService> in
-    let defaultEndpoint = MoyaProvider<ZipaiService>.defaultEndpointMapping(for: target)
+private let endPointClosure = { (target: VideoService) -> Endpoint<VideoService> in
+    let defaultEndpoint = MoyaProvider<VideoService>.defaultEndpointMapping(for: target)
     return defaultEndpoint.adding(parameters: publicParameters as [String : AnyObject]?, httpHeaderFields: headerFields, parameterEncoding: JSONEncoding.default)
 }
 
-let zipaiServiceProvider = RxMoyaProvider.init(endpointClosure: endPointClosure, plugins: [RequestCloudLoadingPlugin()])
+let videoService = RxMoyaProvider.init(endpointClosure: endPointClosure, plugins: [RequestCloudLoadingPlugin()])

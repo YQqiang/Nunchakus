@@ -12,10 +12,11 @@
 		2F185BB61E82240F00EDD62B /* API.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2F185BB51E82240F00EDD62B /* API.swift */; };
 		2F185BB81E82254F00EDD62B /* Hud.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2F185BB71E82254F00EDD62B /* Hud.swift */; };
 		2F185BBA1E8225AD00EDD62B /* PublicTool.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2F185BB91E8225AD00EDD62B /* PublicTool.swift */; };
-		2F185BBC1E82271F00EDD62B /* ZipaiService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2F185BBB1E82271F00EDD62B /* ZipaiService.swift */; };
+		2F185BBC1E82271F00EDD62B /* VideoService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2F185BBB1E82271F00EDD62B /* VideoService.swift */; };
 		2F185BC01E824CDF00EDD62B /* SelfieModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2F185BBF1E824CDF00EDD62B /* SelfieModel.swift */; };
 		2F185BC21E829CF800EDD62B /* BaseModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2F185BC11E829CF800EDD62B /* BaseModel.swift */; };
 		2F185BC51E829F6800EDD62B /* Observable+Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2F185BC31E829F6800EDD62B /* Observable+Extension.swift */; };
+		2F185BC81E82B35D00EDD62B /* VideoCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2F185BC71E82B35D00EDD62B /* VideoCell.swift */; };
 		2F77C4161E80F1230055D364 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2F77C4151E80F1230055D364 /* AppDelegate.swift */; };
 		2F77C41D1E80F1230055D364 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 2F77C41C1E80F1230055D364 /* Assets.xcassets */; };
 		2F77C4201E80F1230055D364 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 2F77C41E1E80F1230055D364 /* LaunchScreen.storyboard */; };
@@ -54,10 +55,11 @@
 		2F185BB51E82240F00EDD62B /* API.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = API.swift; sourceTree = "<group>"; };
 		2F185BB71E82254F00EDD62B /* Hud.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Hud.swift; sourceTree = "<group>"; };
 		2F185BB91E8225AD00EDD62B /* PublicTool.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PublicTool.swift; sourceTree = "<group>"; };
-		2F185BBB1E82271F00EDD62B /* ZipaiService.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ZipaiService.swift; sourceTree = "<group>"; };
+		2F185BBB1E82271F00EDD62B /* VideoService.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = VideoService.swift; sourceTree = "<group>"; };
 		2F185BBF1E824CDF00EDD62B /* SelfieModel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = SelfieModel.swift; path = Nunchakus/Nunchakus/Services/SelfieModel.swift; sourceTree = SOURCE_ROOT; };
 		2F185BC11E829CF800EDD62B /* BaseModel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = BaseModel.swift; path = Nunchakus/Nunchakus/Services/BaseModel.swift; sourceTree = SOURCE_ROOT; };
 		2F185BC31E829F6800EDD62B /* Observable+Extension.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "Observable+Extension.swift"; sourceTree = "<group>"; };
+		2F185BC71E82B35D00EDD62B /* VideoCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = VideoCell.swift; sourceTree = "<group>"; };
 		2F77C4121E80F1230055D364 /* Nunchakus.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Nunchakus.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		2F77C4151E80F1230055D364 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		2F77C41C1E80F1230055D364 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
@@ -280,6 +282,7 @@
 			isa = PBXGroup;
 			children = (
 				C707A39C1E81532000278E40 /* SelfieViewController.swift */,
+				2F185BC71E82B35D00EDD62B /* VideoCell.swift */,
 			);
 			path = ViewController;
 			sourceTree = "<group>";
@@ -295,7 +298,7 @@
 			isa = PBXGroup;
 			children = (
 				2F185BB51E82240F00EDD62B /* API.swift */,
-				2F185BBB1E82271F00EDD62B /* ZipaiService.swift */,
+				2F185BBB1E82271F00EDD62B /* VideoService.swift */,
 				C707A3831E814EE400278E40 /* Model */,
 				C707A3841E814EE400278E40 /* ViewController */,
 				C707A3851E814EE400278E40 /* ViewModel */,
@@ -620,10 +623,11 @@
 				C707A39B1E81530600278E40 /* MainTabBarController.swift in Sources */,
 				2F185BC51E829F6800EDD62B /* Observable+Extension.swift in Sources */,
 				2F185BBA1E8225AD00EDD62B /* PublicTool.swift in Sources */,
+				2F185BC81E82B35D00EDD62B /* VideoCell.swift in Sources */,
 				C707A3931E814FA000278E40 /* BaseViewController.swift in Sources */,
 				2F185BB41E8212B200EDD62B /* EmptyDataView.swift in Sources */,
 				C707A3951E814FBC00278E40 /* BaseNavigationController.swift in Sources */,
-				2F185BBC1E82271F00EDD62B /* ZipaiService.swift in Sources */,
+				2F185BBC1E82271F00EDD62B /* VideoService.swift in Sources */,
 				C707A3991E81504500278E40 /* UIImage-Extension.swift in Sources */,
 				C707A39F1E81533300278E40 /* StageViewController.swift in Sources */,
 			);

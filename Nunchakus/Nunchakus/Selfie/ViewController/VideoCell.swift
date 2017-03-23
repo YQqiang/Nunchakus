@@ -14,6 +14,7 @@ class VideoCell: UITableViewCell {
     fileprivate lazy var timeLabel: UILabel = UILabel()
     fileprivate lazy var titleLabel: UILabel = UILabel()
     fileprivate lazy var imgV: UIImageView = UIImageView()
+    fileprivate lazy var videoPlayBtn: UIButton = UIButton()
     
     var videoModel: SelfieModel? {
         didSet {
@@ -61,6 +62,7 @@ extension VideoCell {
         superView.addSubview(imgV)
         imgV.addSubview(timeLabel)
         superView.addSubview(titleLabel)
+        superView.addSubview(videoPlayBtn)
         
         imgV.snp.makeConstraints { (make) in
             make.top.left.right.equalTo(superView)
@@ -83,6 +85,18 @@ extension VideoCell {
             make.top.equalTo(imgV.snp.bottom).offset(8)
             make.bottom.equalTo(superView).offset(-8)
         }
+        
+        videoPlayBtn.setImage(#imageLiteral(resourceName: "video-play"), for: .normal)
+        videoPlayBtn.addTarget(self, action: #selector(videoPlayAction), for: .touchUpInside)
+        videoPlayBtn.snp.makeConstraints { (make) in
+            make.center.equalTo(imgV)
+        }
         superView.backgroundColor = UIColor.bgColor()
+    }
+}
+
+extension VideoCell {
+    @objc fileprivate func videoPlayAction() {
+        print(#function, #line)
     }
 }

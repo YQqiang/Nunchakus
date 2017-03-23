@@ -117,6 +117,7 @@ extension SelfieViewController {
 extension SelfieViewController: UITableViewDelegate {
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         tableView.deselectRow(at: indexPath, animated: false)
+        _ = navigationController?.pushViewController(WebViewController(), animated: true)
     }
 }
 

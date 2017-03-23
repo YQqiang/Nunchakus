@@ -17,6 +17,8 @@
 		2F185BC21E829CF800EDD62B /* BaseModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2F185BC11E829CF800EDD62B /* BaseModel.swift */; };
 		2F185BC51E829F6800EDD62B /* Observable+Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2F185BC31E829F6800EDD62B /* Observable+Extension.swift */; };
 		2F185BC81E82B35D00EDD62B /* VideoCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2F185BC71E82B35D00EDD62B /* VideoCell.swift */; };
+		2F4087391E83AE68008EF959 /* WebViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2F4087381E83AE68008EF959 /* WebViewController.swift */; };
+		2F4087401E83E9DB008EF959 /* test.html in Resources */ = {isa = PBXBuildFile; fileRef = 2F40873F1E83E9DB008EF959 /* test.html */; };
 		2F77C4161E80F1230055D364 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2F77C4151E80F1230055D364 /* AppDelegate.swift */; };
 		2F77C41D1E80F1230055D364 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 2F77C41C1E80F1230055D364 /* Assets.xcassets */; };
 		2F77C4201E80F1230055D364 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 2F77C41E1E80F1230055D364 /* LaunchScreen.storyboard */; };
@@ -61,6 +63,8 @@
 		2F185BC11E829CF800EDD62B /* BaseModel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = BaseModel.swift; path = Nunchakus/Nunchakus/Services/BaseModel.swift; sourceTree = SOURCE_ROOT; };
 		2F185BC31E829F6800EDD62B /* Observable+Extension.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "Observable+Extension.swift"; sourceTree = "<group>"; };
 		2F185BC71E82B35D00EDD62B /* VideoCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = VideoCell.swift; sourceTree = "<group>"; };
+		2F4087381E83AE68008EF959 /* WebViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = WebViewController.swift; sourceTree = "<group>"; };
+		2F40873F1E83E9DB008EF959 /* test.html */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.html; path = test.html; sourceTree = "<group>"; };
 		2F77C4121E80F1230055D364 /* Nunchakus.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Nunchakus.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		2F77C4151E80F1230055D364 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		2F77C41C1E80F1230055D364 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
@@ -284,6 +288,8 @@
 			isa = PBXGroup;
 			children = (
 				C707A39C1E81532000278E40 /* SelfieViewController.swift */,
+				2F4087381E83AE68008EF959 /* WebViewController.swift */,
+				2F40873F1E83E9DB008EF959 /* test.html */,
 				2F185BC71E82B35D00EDD62B /* VideoCell.swift */,
 			);
 			path = ViewController;
@@ -543,6 +549,7 @@
 			files = (
 				2F77C4201E80F1230055D364 /* LaunchScreen.storyboard in Resources */,
 				2F77C41D1E80F1230055D364 /* Assets.xcassets in Resources */,
+				2F4087401E83E9DB008EF959 /* test.html in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -618,6 +625,7 @@
 				2F185BB61E82240F00EDD62B /* API.swift in Sources */,
 				2F77C4161E80F1230055D364 /* AppDelegate.swift in Sources */,
 				C707A3981E81504500278E40 /* UIColor-Extension.swift in Sources */,
+				2F4087391E83AE68008EF959 /* WebViewController.swift in Sources */,
 				C707A39D1E81532000278E40 /* SelfieViewController.swift in Sources */,
 				C707A3A11E81534100278E40 /* TeachingViewController.swift in Sources */,
 				2F185BC01E824CDF00EDD62B /* SelfieModel.swift in Sources */,

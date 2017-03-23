@@ -8,9 +8,10 @@
 
 import UIKit
 
-class TeachingViewController: BaseViewController {
+class TeachingViewController: SelfieViewController {
 
     override func viewDidLoad() {
+        self.videoType = .jiaoxue
         super.viewDidLoad()
 
         // Do any additional setup after loading the view.

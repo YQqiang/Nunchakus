@@ -15,15 +15,18 @@ private let videoCellID = "videoCellID"
 
 class SelfieViewController: BaseViewController {
     
+    var videoType: VideoType = .zipai
+    
     fileprivate lazy var tableView: UITableView = UITableView(frame: CGRect.zero, style: .plain)
     fileprivate var curPage: Int = 1
+    fileprivate lazy var videos: [SelfieModel] = [SelfieModel]()
     
     let disposeBag = DisposeBag()
     
     override func viewDidLoad() {
         super.viewDidLoad()
         createUI()
-        
+        loadNewData()
     }
 }
 
@@ -38,6 +41,7 @@ extension SelfieViewController {
         tableView.separatorStyle = .none
         tableView.register(VideoCell.self, forCellReuseIdentifier: videoCellID)
         view.addSubview(tableView)
+        // 顶部预留间距
         tableView.contentInset = UIEdgeInsetsMake(8, 0, 0, 0)
         tableView.contentOffset = CGPoint(x: 0, y: -8)
         tableView.snp.makeConstraints { (make) in
@@ -49,16 +53,16 @@ extension SelfieViewController {
 // MARK:- load data 
 extension SelfieViewController {
     fileprivate func loadNewData() {
-        videoService.request(.video(type: .media, page: 1)).mapString().showAPIErrorToast().subscribe(onNext: {[weak self] (html) in
+        videoService.request(.video(type: videoType, page: 1)).mapString().showAPIErrorToast().subscribe(onNext: {[weak self] (html) in
             if let doc = HTML(html: html, encoding: .utf8) {
                 let ul = doc.xpath("//div[@class='lbox']/ul/li")
-                var items: [SelfieModel] = []
                 for li in ul {
                     let model = SelfieModel(html: li)
-                    items.append(model)
+                    self?.videos.append(model)
                 }
                 self?.curPage += 1
             }
+            self?.tableView.reloadData()
         }, onError: { (error) in
             print(error)
         }, onCompleted: nil) {
@@ -92,11 +96,12 @@ extension SelfieViewController: UITableViewDelegate {
 // MARK: - UITableViewDataSource
 extension SelfieViewController: UITableViewDataSource {
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        return 20
+        return self.videos.count
     }
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cell = tableView.dequeueReusableCell(withIdentifier: videoCellID) as! VideoCell
+        cell.videoModel = videos[indexPath.row]
         return cell
     }
 }

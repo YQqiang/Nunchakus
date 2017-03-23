@@ -7,12 +7,22 @@
 //
 
 import UIKit
+import Kingfisher
 
 class VideoCell: UITableViewCell {
 
     fileprivate lazy var timeLabel: UILabel = UILabel()
     fileprivate lazy var titleLabel: UILabel = UILabel()
     fileprivate lazy var imgV: UIImageView = UIImageView()
+    
+    var videoModel: SelfieModel? {
+        didSet {
+            let url = URL(string: videoModel?.img ?? "")
+            imgV.kf.setImage(with: url, placeholder: #imageLiteral(resourceName: "bg_media_default"), options: nil, progressBlock: nil, completionHandler: nil)
+            timeLabel.text = default__str(videoModel?.time)
+            titleLabel.text = default__str(videoModel?.title)
+        }
+    }
     
     override init(style: UITableViewCellStyle, reuseIdentifier: String?) {
         super.init(style: style, reuseIdentifier: reuseIdentifier)
@@ -61,20 +71,18 @@ extension VideoCell {
         timeLabel.textColor = UIColor.white
         timeLabel.font = UIFont.systemFont(ofSize: 13)
         timeLabel.snp.makeConstraints { (make) in
-            make.right.bottom.equalTo(imgV)
+            make.right.bottom.equalTo(imgV).offset(-8)
         }
         
         titleLabel.numberOfLines = 0
-        titleLabel.textColor = UIColor.white
-        titleLabel.font = UIFont.systemFont(ofSize: 15)
+        titleLabel.textColor = UIColor.black
+        titleLabel.font = UIFont.systemFont(ofSize: 16)
         titleLabel.snp.makeConstraints { (make) in
-            make.left.right.equalTo(imgV)
-            make.top.equalTo(imgV.snp.bottom)
+            make.left.equalTo(imgV).offset(8)
+            make.right.equalTo(imgV).offset(-8)
+            make.top.equalTo(imgV.snp.bottom).offset(8)
             make.bottom.equalTo(superView).offset(-8)
         }
-        
-        superView.backgroundColor = UIColor.orange
-        titleLabel.text = "fjsajfsfja"
-        timeLabel.text = "yuqiang"
+        superView.backgroundColor = UIColor.bgColor()
     }
 }

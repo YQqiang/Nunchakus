@@ -8,9 +8,10 @@
 
 import UIKit
 
-class StageViewController: BaseViewController {
+class StageViewController: SelfieViewController {
 
     override func viewDidLoad() {
+        self.videoType = .biaoyan
         super.viewDidLoad()
 
         // Do any additional setup after loading the view.

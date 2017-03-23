@@ -8,8 +8,8 @@
 
 import UIKit
 import RxSwift
-import EVReflection
 import Kanna
+import MJRefresh
 
 private let videoCellID = "videoCellID"
 
@@ -26,7 +26,8 @@ class SelfieViewController: BaseViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         createUI()
-        loadNewData()
+        createMJRefresh()
+        tableView.mj_header.beginRefreshing()
     }
 }
 
@@ -48,12 +49,45 @@ extension SelfieViewController {
             make.edges.equalTo(self.view)
         }
     }
+    
+    fileprivate func createMJRefresh() {
+        tableView.mj_header = MJRefreshNormalHeader.init(refreshingTarget: self , refreshingAction: #selector(loadNewData))
+        tableView.mj_header.isAutomaticallyChangeAlpha = true
+        tableView.mj_footer = MJRefreshBackNormalFooter.init(refreshingTarget: self, refreshingAction: #selector(loadMoreData))
+    }
 }
 
 // MARK:- load data 
 extension SelfieViewController {
-    fileprivate func loadNewData() {
+    @objc fileprivate func loadNewData() {
         videoService.request(.video(type: videoType, page: 1)).mapString().showAPIErrorToast().subscribe(onNext: {[weak self] (html) in
+            if let doc = HTML(html: html, encoding: .utf8) {
+                let ul = doc.xpath("//div[@class='lbox']/ul/li")
+                self?.videos.removeAll()
+                for li in ul {
+                    let model = SelfieModel(html: li)
+                    self?.videos.append(model)
+                }
+                self?.curPage += 1
+                let page = doc.xpath("//div[@class='pagebar']/a")
+                let isNext = SelfieModel.isHaveNextPage(html: page)
+                if !isNext {
+                    self?.tableView.mj_footer.endRefreshingWithNoMoreData()
+                } else {
+                    self?.tableView.mj_footer.endRefreshing()
+                }
+            }
+            self?.tableView.mj_header.endRefreshing()
+            self?.tableView.reloadData()
+        }, onError: {[weak self] (error) in
+            self?.tableView.mj_header.endRefreshing()
+            self?.tableView.mj_footer.endRefreshing()
+        }, onCompleted: nil) {
+            }.addDisposableTo(disposeBag)
+    }
+    
+    @objc fileprivate func loadMoreData() {
+        videoService.request(.video(type: videoType, page: curPage)).mapString().showAPIErrorToast().subscribe(onNext: {[weak self] (html) in
             if let doc = HTML(html: html, encoding: .utf8) {
                 let ul = doc.xpath("//div[@class='lbox']/ul/li")
                 for li in ul {
@@ -61,26 +95,19 @@ extension SelfieViewController {
                     self?.videos.append(model)
                 }
                 self?.curPage += 1
-            }
-            self?.tableView.reloadData()
-        }, onError: { (error) in
-            print(error)
-        }, onCompleted: nil) {
-            }.addDisposableTo(disposeBag)
-    }
-    
-    fileprivate func loadMoreData() {
-        videoService.request(.video(type: .media, page: curPage)).mapString().showAPIErrorToast().subscribe(onNext: { (html) in
-            if let doc = HTML(html: html, encoding: .utf8) {
-                let ul = doc.xpath("//div[@class='lbox']/ul/li")
-                var items: [SelfieModel] = []
-                for li in ul {
-                    let model = SelfieModel(html: li)
-                    items.append(model)
+                let page = doc.xpath("//div[@class='pagebar']/a")
+                let isNext = SelfieModel.isHaveNextPage(html: page)
+                if !isNext {
+                    self?.tableView.mj_footer.endRefreshingWithNoMoreData()
+                } else {
+                    self?.tableView.mj_footer.endRefreshing()
                 }
             }
-        }, onError: { (error) in
-            print(error)
+            self?.tableView.mj_header.endRefreshing()
+            self?.tableView.reloadData()
+        }, onError: {[weak self] (error) in
+            self?.tableView.mj_header.endRefreshing()
+            self?.tableView.mj_footer.endRefreshing()
         }, onCompleted: nil) {
             }.addDisposableTo(disposeBag)
     }

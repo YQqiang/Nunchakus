@@ -28,3 +28,19 @@ class SelfieModel: BaseModel {
         }
     }
 }
+
+extension SelfieModel {
+    class func isHaveNextPage(html: XPathObject) -> Bool {
+        let maxCount = html[html.count - 1]["href"]?.components(separatedBy: "/")
+        guard let maxC = maxCount, maxC.count >= 2 else {
+            return false
+        }
+        let max = maxC[maxC.count - 2]
+        for a in html {
+            if (a.className == "now") {
+                return max != (a.content ?? "1")
+            }
+        }
+        return false
+    }
+}

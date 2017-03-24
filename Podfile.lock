@@ -1,9 +1,5 @@
 PODS:
   - Alamofire (4.4.0)
-  - EVReflection/Core (4.5.0)
-  - EVReflection/XML (4.5.0):
-    - EVReflection/Core
-    - XMLDictionary
   - Kanna (2.1.1)
   - Kingfisher (3.5.2)
   - MJRefresh (3.1.12)
@@ -21,10 +17,8 @@ PODS:
   - SnapKit (3.1.2)
   - SVProgressHUD (2.1.2)
   - Toaster (2.0.3)
-  - XMLDictionary (1.4.1)
 
 DEPENDENCIES:
-  - EVReflection/XML
   - Kanna
   - Kingfisher
   - MJRefresh
@@ -38,7 +32,6 @@ DEPENDENCIES:
 
 SPEC CHECKSUMS:
   Alamofire: dc44b1600b800eb63da6a19039a0083d62a6a62d
-  EVReflection: f3ef628809585feefa72bf6a8b1ffd3a7a619bdb
   Kanna: 9b4b086c218703f2b94f5b21a466217dd2f9332e
   Kingfisher: 9950e382c500b6834ce004c7c4131c444e90c3a1
   MJRefresh: b96cdb21c4aa75a7b07654311ab2f315c497e806
@@ -50,8 +43,7 @@ SPEC CHECKSUMS:
   SnapKit: 12b24f569cb7c143acc9c22b9d91b23e7b1c84a2
   SVProgressHUD: c404a55d78acbeb7ebb78b76d3faf986475a6994
   Toaster: 77c0b03d78e680bbbab0071c9c7ee392b0034010
-  XMLDictionary: fa07b6ff422b3a91d47a5de9bc82e3fc04fbd167
 
-PODFILE CHECKSUM: 264fef27f2d418f7bbf757efe06db52d1d49d601
+PODFILE CHECKSUM: c5a16118480fc312cb818d1c92e0704ba5fb58d8
 
 COCOAPODS: 1.2.0.beta.1

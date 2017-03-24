@@ -34,7 +34,6 @@ class SelfieViewController: BaseViewController {
 // MARK:- private func 
 extension SelfieViewController {
     fileprivate func createUI() {
-        emptyDataView.isHidden = true
         tableView.delegate = self
         tableView.dataSource = self
         tableView.rowHeight = UITableViewAutomaticDimension
@@ -117,13 +116,26 @@ extension SelfieViewController {
 extension SelfieViewController: UITableViewDelegate {
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         tableView.deselectRow(at: indexPath, animated: false)
-        _ = navigationController?.pushViewController(WebViewController(), animated: true)
+        let videoModel = videos[indexPath.row]
+        let videoNum = videoModel.video?.components(separatedBy: "/").last
+        videoService.request(.video(type: .v, page: Int(videoNum ?? "0") ?? 0)).mapString().showAPIErrorToast().subscribe(onNext: {[weak self] (html) in
+            if let doc = HTML(html: html, encoding: .utf8) {
+                let iframe = doc.at_xpath("//div[@class='playbox']/div[@class='wrap']/div[@class='play']/div[@id='a3']/iframe")
+                print("iframe = \(iframe?.toHTML)")
+                let webView = WebViewController()
+                webView.html = iframe?.toHTML
+                _ = self?.navigationController?.pushViewController(webView, animated: true)
+            }
+            }, onError: { (error) in
+        }, onCompleted: nil) {
+            }.addDisposableTo(disposeBag)
     }
 }
 
 // MARK: - UITableViewDataSource
 extension SelfieViewController: UITableViewDataSource {
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
+        emptyDataView.isHidden = self.videos.count > 0
         return self.videos.count
     }
     

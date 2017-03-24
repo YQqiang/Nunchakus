@@ -11,22 +11,22 @@ import UIKit
 class WebViewController: BaseViewController {
 
     fileprivate lazy var webView: UIWebView = UIWebView()
+    var html: String? {
+        didSet {
+            if let html = html {
+                webView.loadHTMLString(html, baseURL: nil)   
+            }
+        }
+    }
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        navigationItem.title = NSLocalizedString("视屏播放", comment: "")
         emptyDataView.isHidden = true
         view.addSubview(webView)
         webView.snp.makeConstraints { (make) in
-            make.top.equalTo(view).offset(16)
-            make.left.equalTo(view).offset(8)
-            make.right.equalTo(view).offset(-8)
-            make.height.equalTo(300)
-        }
-        let html = Bundle.main.url(forResource: "test", withExtension: "html")
-        print("html = \(html?.absoluteString)")
-        if let html = html {
-            let urlRequest = URLRequest(url: html)
-            webView.loadRequest(urlRequest)
+            make.top.left.right.equalTo(view)
+            make.bottom.equalTo(view.snp.centerY)
         }
     }
 

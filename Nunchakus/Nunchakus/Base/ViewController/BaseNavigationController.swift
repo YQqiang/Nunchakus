@@ -14,18 +14,18 @@ class BaseNavigationController: UINavigationController {
     override class func initialize() {
         /// 1. 设置导航栏 UINavigationBar
         let navBar = UINavigationBar.appearance()
-        navBar.titleTextAttributes = [NSFontAttributeName: UIFont.systemFont(ofSize: 18), NSForegroundColorAttributeName: UIColor.globalColor()]
+        navBar.titleTextAttributes = [NSFontAttributeName: UIFont.systemFont(ofSize: 18), NSForegroundColorAttributeName: UIColor.black]
 //        navBar.tintColor = UIColor.color(0xeeeeee)
-        navBar.setBackgroundImage(UIImage.image(UIColor.color(0xeeeeee)), for: UIBarMetrics.default)
+        navBar.setBackgroundImage(UIImage.image(UIColor.globalColor()), for: UIBarMetrics.default)
         /// 2. 设置 UIBarButtonItem
         let barButtonItem = UIBarButtonItem.appearance()
         var normalItemDic: [String: Any] = [String: Any]()
         normalItemDic[NSFontAttributeName] = UIFont.systemFont(ofSize: 15)
-        normalItemDic[NSForegroundColorAttributeName] = UIColor.globalColor()
+        normalItemDic[NSForegroundColorAttributeName] = UIColor.black
         barButtonItem.setTitleTextAttributes(normalItemDic, for: .normal)
         
         var disabledItemDic: [String: Any] = [String: Any]()
-        disabledItemDic[NSForegroundColorAttributeName] = UIColor.globalColor()
+        disabledItemDic[NSForegroundColorAttributeName] = UIColor.black
         barButtonItem.setTitleTextAttributes(disabledItemDic, for: .disabled)
     }
     
@@ -43,10 +43,10 @@ class BaseNavigationController: UINavigationController {
         if self.viewControllers.count > 0 {
             let backButton = UIButton(type: .custom)
             backButton.setTitle(NSLocalizedString("返回", comment: ""), for: .normal)
-            backButton.setTitleColor(UIColor.white, for: .normal)
-            backButton.setTitleColor(UIColor.white, for: .highlighted)
-            backButton.setImage(#imageLiteral(resourceName: "navbar-back"), for: .normal)
-            backButton.setImage(#imageLiteral(resourceName: "navbar-back"), for: .highlighted)
+            backButton.setTitleColor(UIColor.black, for: .normal)
+            backButton.setTitleColor(UIColor.black, for: .highlighted)
+            backButton.setImage(#imageLiteral(resourceName: "navbar-back").image(UIColor.black), for: .normal)
+            backButton.setImage(#imageLiteral(resourceName: "navbar-back").image(UIColor.black), for: .highlighted)
             backButton.frame.size = CGSize(width: 70, height: 30)
             /// 设置按钮的内容左对齐
             backButton.contentHorizontalAlignment = .left

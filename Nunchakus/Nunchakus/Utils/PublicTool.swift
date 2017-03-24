@@ -16,6 +16,7 @@ enum VideoType {
     case movie      // 影视动画
     case guowai     // 国外聚焦
     case paoku      // 极限跑酷
+    case v          // 播放视屏
 }
 
 /*

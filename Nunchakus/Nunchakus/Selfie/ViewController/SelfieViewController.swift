@@ -29,6 +29,10 @@ class SelfieViewController: BaseViewController {
         createMJRefresh()
         tableView.mj_header.beginRefreshing()
     }
+    
+    override func loadRequestData() {
+        tableView.mj_header.beginRefreshing()
+    }
 }
 
 // MARK:- private func 

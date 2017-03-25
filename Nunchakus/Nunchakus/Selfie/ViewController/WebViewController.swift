@@ -8,7 +8,7 @@
 
 import UIKit
 
-class WebViewController: BaseViewController {
+class WebViewController: BaseViewController, UIWebViewDelegate {
 
     fileprivate lazy var webView: UIWebView = UIWebView()
     var html: String? {
@@ -28,6 +28,7 @@ class WebViewController: BaseViewController {
             make.top.left.right.equalTo(view)
             make.bottom.equalTo(view.snp.centerY)
         }
+        self.webView.delegate = self
     }
 
     override func didReceiveMemoryWarning() {
@@ -35,6 +36,10 @@ class WebViewController: BaseViewController {
         // Dispose of any resources that can be recreated.
     }
     
+    func webView(_ webView: UIWebView, shouldStartLoadWith request: URLRequest, navigationType: UIWebViewNavigationType) -> Bool {
+        print(request.url)
+        return true
+    }
 
     /*
     // MARK: - Navigation

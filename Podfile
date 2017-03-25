@@ -14,5 +14,6 @@ pod 'RxSwift'
 pod 'RxCocoa'
 pod 'Moya/RxSwift'
 pod 'Kingfisher'
+pod 'BMPlayer'
 
 end

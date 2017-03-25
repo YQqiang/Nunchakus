@@ -24,6 +24,7 @@
 		2F77C4201E80F1230055D364 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 2F77C41E1E80F1230055D364 /* LaunchScreen.storyboard */; };
 		2F77C42B1E80F1230055D364 /* NunchakusTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2F77C42A1E80F1230055D364 /* NunchakusTests.swift */; };
 		2F77C4361E80F1230055D364 /* NunchakusUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2F77C4351E80F1230055D364 /* NunchakusUITests.swift */; };
+		2F9E40301E8521350078BE57 /* youku.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2F9E402F1E8521350078BE57 /* youku.swift */; };
 		C707A3931E814FA000278E40 /* BaseViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = C707A3921E814FA000278E40 /* BaseViewController.swift */; };
 		C707A3951E814FBC00278E40 /* BaseNavigationController.swift in Sources */ = {isa = PBXBuildFile; fileRef = C707A3941E814FBC00278E40 /* BaseNavigationController.swift */; };
 		C707A3981E81504500278E40 /* UIColor-Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = C707A3961E81504500278E40 /* UIColor-Extension.swift */; };
@@ -76,6 +77,7 @@
 		2F77C4311E80F1230055D364 /* NunchakusUITests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = NunchakusUITests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		2F77C4351E80F1230055D364 /* NunchakusUITests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NunchakusUITests.swift; sourceTree = "<group>"; };
 		2F77C4371E80F1230055D364 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		2F9E402F1E8521350078BE57 /* youku.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = youku.swift; sourceTree = "<group>"; };
 		93C39ADC4E74FA06CE9DB69A /* Pods-Nunchakus.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Nunchakus.release.xcconfig"; path = "Pods/Target Support Files/Pods-Nunchakus/Pods-Nunchakus.release.xcconfig"; sourceTree = "<group>"; };
 		C707A3921E814FA000278E40 /* BaseViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = BaseViewController.swift; sourceTree = "<group>"; };
 		C707A3941E814FBC00278E40 /* BaseNavigationController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = BaseNavigationController.swift; sourceTree = "<group>"; };
@@ -408,6 +410,7 @@
 				C707A3901E814EE400278E40 /* ViewController */,
 				C707A3911E814EE400278E40 /* ViewModel */,
 				C717B0FC1E82C2A600B99D59 /* Common.swift */,
+				2F9E402F1E8521350078BE57 /* youku.swift */,
 			);
 			path = Utils;
 			sourceTree = "<group>";
@@ -630,6 +633,7 @@
 				C707A3A11E81534100278E40 /* TeachingViewController.swift in Sources */,
 				2F185BC01E824CDF00EDD62B /* SelfieModel.swift in Sources */,
 				2F185BC21E829CF800EDD62B /* BaseModel.swift in Sources */,
+				2F9E40301E8521350078BE57 /* youku.swift in Sources */,
 				2F185BB81E82254F00EDD62B /* Hud.swift in Sources */,
 				C707A39B1E81530600278E40 /* MainTabBarController.swift in Sources */,
 				2F185BC51E829F6800EDD62B /* Observable+Extension.swift in Sources */,

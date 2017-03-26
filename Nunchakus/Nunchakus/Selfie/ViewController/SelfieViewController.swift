@@ -10,6 +10,7 @@ import UIKit
 import RxSwift
 import Kanna
 import MJRefresh
+import BMPlayer
 
 private let videoCellID = "videoCellID"
 
@@ -20,6 +21,8 @@ class SelfieViewController: BaseViewController {
     fileprivate lazy var tableView: UITableView = UITableView(frame: CGRect.zero, style: .plain)
     fileprivate var curPage: Int = 1
     fileprivate lazy var videos: [SelfieModel] = [SelfieModel]()
+    
+    let player: BMPlayer = BMPlayer()
     
     let disposeBag = DisposeBag()
     

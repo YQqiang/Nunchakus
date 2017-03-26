@@ -18,13 +18,15 @@
 		2F185BC51E829F6800EDD62B /* Observable+Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2F185BC31E829F6800EDD62B /* Observable+Extension.swift */; };
 		2F185BC81E82B35D00EDD62B /* VideoCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2F185BC71E82B35D00EDD62B /* VideoCell.swift */; };
 		2F4087391E83AE68008EF959 /* WebViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2F4087381E83AE68008EF959 /* WebViewController.swift */; };
-		2F4087401E83E9DB008EF959 /* test.html in Resources */ = {isa = PBXBuildFile; fileRef = 2F40873F1E83E9DB008EF959 /* test.html */; };
 		2F77C4161E80F1230055D364 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2F77C4151E80F1230055D364 /* AppDelegate.swift */; };
 		2F77C41D1E80F1230055D364 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 2F77C41C1E80F1230055D364 /* Assets.xcassets */; };
 		2F77C4201E80F1230055D364 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 2F77C41E1E80F1230055D364 /* LaunchScreen.storyboard */; };
 		2F77C42B1E80F1230055D364 /* NunchakusTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2F77C42A1E80F1230055D364 /* NunchakusTests.swift */; };
 		2F77C4361E80F1230055D364 /* NunchakusUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2F77C4351E80F1230055D364 /* NunchakusUITests.swift */; };
 		2F9E40301E8521350078BE57 /* youku.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2F9E402F1E8521350078BE57 /* youku.swift */; };
+		2FF2228E1E86A8B200D2FBCD /* test.html in Resources */ = {isa = PBXBuildFile; fileRef = 2FF2228B1E86A8B200D2FBCD /* test.html */; };
+		2FF2228F1E86A8B200D2FBCD /* jquery-3.1.1.js in Resources */ = {isa = PBXBuildFile; fileRef = 2FF2228C1E86A8B200D2FBCD /* jquery-3.1.1.js */; };
+		2FF222901E86A8B200D2FBCD /* requestURL.js in Resources */ = {isa = PBXBuildFile; fileRef = 2FF2228D1E86A8B200D2FBCD /* requestURL.js */; };
 		C707A3931E814FA000278E40 /* BaseViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = C707A3921E814FA000278E40 /* BaseViewController.swift */; };
 		C707A3951E814FBC00278E40 /* BaseNavigationController.swift in Sources */ = {isa = PBXBuildFile; fileRef = C707A3941E814FBC00278E40 /* BaseNavigationController.swift */; };
 		C707A3981E81504500278E40 /* UIColor-Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = C707A3961E81504500278E40 /* UIColor-Extension.swift */; };
@@ -65,7 +67,6 @@
 		2F185BC31E829F6800EDD62B /* Observable+Extension.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "Observable+Extension.swift"; sourceTree = "<group>"; };
 		2F185BC71E82B35D00EDD62B /* VideoCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = VideoCell.swift; sourceTree = "<group>"; };
 		2F4087381E83AE68008EF959 /* WebViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = WebViewController.swift; sourceTree = "<group>"; };
-		2F40873F1E83E9DB008EF959 /* test.html */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.html; path = test.html; sourceTree = "<group>"; };
 		2F77C4121E80F1230055D364 /* Nunchakus.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Nunchakus.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		2F77C4151E80F1230055D364 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		2F77C41C1E80F1230055D364 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
@@ -78,6 +79,9 @@
 		2F77C4351E80F1230055D364 /* NunchakusUITests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NunchakusUITests.swift; sourceTree = "<group>"; };
 		2F77C4371E80F1230055D364 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		2F9E402F1E8521350078BE57 /* youku.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = youku.swift; sourceTree = "<group>"; };
+		2FF2228B1E86A8B200D2FBCD /* test.html */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.html; path = test.html; sourceTree = "<group>"; };
+		2FF2228C1E86A8B200D2FBCD /* jquery-3.1.1.js */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.javascript; path = "jquery-3.1.1.js"; sourceTree = "<group>"; };
+		2FF2228D1E86A8B200D2FBCD /* requestURL.js */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.javascript; path = requestURL.js; sourceTree = "<group>"; };
 		93C39ADC4E74FA06CE9DB69A /* Pods-Nunchakus.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Nunchakus.release.xcconfig"; path = "Pods/Target Support Files/Pods-Nunchakus/Pods-Nunchakus.release.xcconfig"; sourceTree = "<group>"; };
 		C707A3921E814FA000278E40 /* BaseViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = BaseViewController.swift; sourceTree = "<group>"; };
 		C707A3941E814FBC00278E40 /* BaseNavigationController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = BaseNavigationController.swift; sourceTree = "<group>"; };
@@ -167,6 +171,16 @@
 				2F77C4371E80F1230055D364 /* Info.plist */,
 			);
 			path = NunchakusUITests;
+			sourceTree = "<group>";
+		};
+		2FF2228A1E86A89E00D2FBCD /* js */ = {
+			isa = PBXGroup;
+			children = (
+				2FF2228B1E86A8B200D2FBCD /* test.html */,
+				2FF2228C1E86A8B200D2FBCD /* jquery-3.1.1.js */,
+				2FF2228D1E86A8B200D2FBCD /* requestURL.js */,
+			);
+			name = js;
 			sourceTree = "<group>";
 		};
 		88BE2B38D6BDBD62E29AD299 /* Pods */ = {
@@ -271,6 +285,7 @@
 		C707A37E1E814EE400278E40 /* Selfie */ = {
 			isa = PBXGroup;
 			children = (
+				2FF2228A1E86A89E00D2FBCD /* js */,
 				C707A37F1E814EE400278E40 /* Model */,
 				C707A3801E814EE400278E40 /* ViewController */,
 				C707A3811E814EE400278E40 /* ViewModel */,
@@ -291,7 +306,6 @@
 			children = (
 				C707A39C1E81532000278E40 /* SelfieViewController.swift */,
 				2F4087381E83AE68008EF959 /* WebViewController.swift */,
-				2F40873F1E83E9DB008EF959 /* test.html */,
 				2F185BC71E82B35D00EDD62B /* VideoCell.swift */,
 			);
 			path = ViewController;
@@ -550,9 +564,11 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				2FF2228F1E86A8B200D2FBCD /* jquery-3.1.1.js in Resources */,
+				2FF2228E1E86A8B200D2FBCD /* test.html in Resources */,
+				2FF222901E86A8B200D2FBCD /* requestURL.js in Resources */,
 				2F77C4201E80F1230055D364 /* LaunchScreen.storyboard in Resources */,
 				2F77C41D1E80F1230055D364 /* Assets.xcassets in Resources */,
-				2F4087401E83E9DB008EF959 /* test.html in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

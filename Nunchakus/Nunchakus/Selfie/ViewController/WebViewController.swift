@@ -7,14 +7,16 @@
 //
 
 import UIKit
+import JavaScriptCore
 
 class WebViewController: BaseViewController, UIWebViewDelegate {
 
     fileprivate lazy var webView: UIWebView = UIWebView()
+    var context:JSContext?
     var html: String? {
         didSet {
             if let html = html {
-                webView.loadHTMLString(html, baseURL: nil)   
+//                webView.loadHTMLString(html, baseURL: nil)   
             }
         }
     }
@@ -23,32 +25,36 @@ class WebViewController: BaseViewController, UIWebViewDelegate {
         super.viewDidLoad()
         navigationItem.title = NSLocalizedString("视屏播放", comment: "")
         emptyDataView.isHidden = true
-        view.addSubview(webView)
-        webView.snp.makeConstraints { (make) in
-            make.top.left.right.equalTo(view)
-            make.bottom.equalTo(view.snp.centerY)
+        let baseURL = Bundle.main.bundlePath
+        let requestJSPath = Bundle.main.path(forResource: "test", ofType: "html")!
+        
+        guard let requestJS = try? String.init(contentsOfFile: requestJSPath) else {
+            print("failure!")
+            return
         }
-        self.webView.delegate = self
+        
+        webView = UIWebView.init()
+        webView.backgroundColor = UIColor.gray
+        webView.loadHTMLString(requestJS, baseURL: URL(fileURLWithPath: baseURL))
+        webView.delegate = self
+        webView.frame = self.view.bounds
+        view.addSubview(webView)
     }
-
-    override func didReceiveMemoryWarning() {
-        super.didReceiveMemoryWarning()
-        // Dispose of any resources that can be recreated.
+    
+    deinit {
+        print("\(#function)----deinit")
     }
     
     func webView(_ webView: UIWebView, shouldStartLoadWith request: URLRequest, navigationType: UIWebViewNavigationType) -> Bool {
-        print(request.url)
+        print("url = \(request.url?.absoluteString)")
         return true
     }
-
-    /*
-    // MARK: - Navigation
-
-    // In a storyboard-based application, you will often want to do a little preparation before navigation
-    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-        // Get the new view controller using segue.destinationViewController.
-        // Pass the selected object to the new view controller.
+    
+    func webViewDidFinishLoad(_ webView: UIWebView) {
+        if let context = webView.value(forKeyPath: "documentView.webView.mainFrame.javaScriptContext") as? JSContext {
+            context.evaluateScript("requestURL(window)")
+        } else {
+            print("视频解析错误")
+        }
     }
-    */
-
 }

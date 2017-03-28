@@ -15,9 +15,11 @@ class WebViewController: BaseViewController, UIWebViewDelegate {
     var context:JSContext?
     var html: String? {
         didSet {
-            if let html = html {
-//                webView.loadHTMLString(html, baseURL: nil)   
-            }
+        }
+    }
+    var v_id: String? {
+        didSet {
+            print("v_id = \(v_id)")
         }
     }
     
@@ -37,7 +39,7 @@ class WebViewController: BaseViewController, UIWebViewDelegate {
         webView.backgroundColor = UIColor.gray
         webView.loadHTMLString(requestJS, baseURL: URL(fileURLWithPath: baseURL))
         webView.delegate = self
-        webView.frame = self.view.bounds
+        webView.frame = CGRect.zero
         view.addSubview(webView)
     }
     
@@ -47,6 +49,11 @@ class WebViewController: BaseViewController, UIWebViewDelegate {
     
     func webView(_ webView: UIWebView, shouldStartLoadWith request: URLRequest, navigationType: UIWebViewNavigationType) -> Bool {
         print("url = \(request.url?.absoluteString)")
+        let urlStr = request.url?.absoluteString
+        if let urlStr = urlStr, urlStr.hasPrefix("http://pl.youku.com") {
+            
+            return false
+        }
         return true
     }
     

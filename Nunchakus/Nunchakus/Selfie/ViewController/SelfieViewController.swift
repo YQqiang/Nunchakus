@@ -21,6 +21,7 @@ class SelfieViewController: BaseViewController {
     fileprivate lazy var tableView: UITableView = UITableView(frame: CGRect.zero, style: .plain)
     fileprivate var curPage: Int = 1
     fileprivate lazy var videos: [SelfieModel] = [SelfieModel]()
+    fileprivate lazy var webViewC: WebViewController = WebViewController()
     
     let player: BMPlayer = BMPlayer()
     
@@ -54,6 +55,10 @@ extension SelfieViewController {
         tableView.snp.makeConstraints { (make) in
             make.edges.equalTo(self.view)
         }
+        
+        addChildViewController(webViewC)
+        view.addSubview(webViewC.view)
+        webViewC.view.frame = CGRect.zero
     }
     
     fileprivate func createMJRefresh() {
@@ -131,12 +136,11 @@ extension SelfieViewController: UITableViewDelegate {
                 print("iframe = \(iframe?.toHTML)")
                 if let src = iframe?["src"]?.components(separatedBy: "/").last {
                     print("src = \(src)")
+                    self?.webViewC.v_id = src
                 }
-//                let webView = WebViewController()
-//                webView.html = iframe?.toHTML
-//                _ = self?.navigationController?.pushViewController(webView, animated: true)
             }
             }, onError: { (error) in
+                Hud.showError(status: NSLocalizedString("视屏地址解析出错", comment: ""))
         }, onCompleted: nil) {
             }.addDisposableTo(disposeBag)
     }

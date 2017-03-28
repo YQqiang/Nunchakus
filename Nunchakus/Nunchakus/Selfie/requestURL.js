@@ -1,13 +1,13 @@
 
 console.log("request")
 
-var requestURL = function(window){
-    console.log("requestURL")
+var requestURL = function(window, encodeid){
+    location.href = "yuqiang://+++++" + encodeid
     window.BuildVideoInfo = {
-        encodeid:"XMTY0MTE1NDgyNA",
+        encodeid:encodeid,
         _type:"m3u8",
-        _url:"http://play.youku.com/play/get.json?vid=419020259&ct=12&callback=BuildVideoInfo.response",
-        _vid:"419020259",
+        _url:"http://play.youku.com/play/get.json?vid=" + encodeid + "&ct=12&callback=BuildVideoInfo.response",
+        _vid:encodeid,
     };
     BuildVideoInfo.response = function(a) {
         this.init(a);

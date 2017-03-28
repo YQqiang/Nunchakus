@@ -12,14 +12,14 @@ import JavaScriptCore
 class WebViewController: BaseViewController, UIWebViewDelegate {
 
     fileprivate lazy var webView: UIWebView = UIWebView()
-    var context:JSContext?
-    var html: String? {
-        didSet {
-        }
-    }
     var v_id: String? {
         didSet {
             print("v_id = \(v_id)")
+            if let v_id = v_id {
+                webView.stringByEvaluatingJavaScript(from: "requestURL(window, '\(v_id)')")
+            } else {
+                Hud.showError(status: NSLocalizedString("视屏id错误", comment: ""))
+            }
         }
     }
     
@@ -27,6 +27,9 @@ class WebViewController: BaseViewController, UIWebViewDelegate {
         super.viewDidLoad()
         navigationItem.title = NSLocalizedString("视屏播放", comment: "")
         emptyDataView.isHidden = true
+        webView.delegate = self
+        webView.frame = CGRect.zero
+        view.addSubview(webView)
         let baseURL = Bundle.main.bundlePath
         let requestJSPath = Bundle.main.path(forResource: "test", ofType: "html")!
         
@@ -34,13 +37,7 @@ class WebViewController: BaseViewController, UIWebViewDelegate {
             print("failure!")
             return
         }
-        
-        webView = UIWebView.init()
-        webView.backgroundColor = UIColor.gray
         webView.loadHTMLString(requestJS, baseURL: URL(fileURLWithPath: baseURL))
-        webView.delegate = self
-        webView.frame = CGRect.zero
-        view.addSubview(webView)
     }
     
     deinit {
@@ -58,10 +55,5 @@ class WebViewController: BaseViewController, UIWebViewDelegate {
     }
     
     func webViewDidFinishLoad(_ webView: UIWebView) {
-        if let context = webView.value(forKeyPath: "documentView.webView.mainFrame.javaScriptContext") as? JSContext {
-            context.evaluateScript("requestURL(window)")
-        } else {
-            print("视频解析错误")
-        }
     }
 }

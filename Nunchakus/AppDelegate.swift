@@ -7,6 +7,7 @@
 //
 
 import UIKit
+import Toaster
 
 @UIApplicationMain
 class AppDelegate: UIResponder, UIApplicationDelegate {
@@ -18,6 +19,11 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         // Override point for customization after application launch.
         UITabBar.appearance().tintColor = UIColor.globalColor()
         UINavigationBar.appearance().tintColor = UIColor.globalColor()
+        ToastView.appearance().backgroundColor = UIColor.globalColor()
+        ToastView.appearance().textInsets = UIEdgeInsetsMake(5, 5, 5, 5)
+        ToastView.appearance().font = UIFont.systemFont(ofSize: 17)
+        ToastView.appearance().bottomOffsetPortrait = 65
+        ToastView.appearance().bottomOffsetLandscape = 65
         
         window = UIWindow(frame: UIScreen.main.bounds)
         window?.backgroundColor = UIColor.white

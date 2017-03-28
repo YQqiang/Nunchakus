@@ -17,7 +17,7 @@ class EmptyDataView: UIView {
     }
     var contentImage: UIImage = #imageLiteral(resourceName: "placeholder_bgimg") {
         didSet {
-            contentImageView.image = contentImage
+            contentImageView.image = contentImage.image(UIColor.globalColor())
         }
     }
     
@@ -53,8 +53,8 @@ extension EmptyDataView {
         
         contentTextLabel.text = contentText
         contentTextLabel.textAlignment = .center
-        contentTextLabel.textColor = UIColor.lineColor()
-        contentImageView.image = contentImage
+        contentTextLabel.textColor = UIColor.globalColor()
+        contentImageView.image = contentImage.image(UIColor.globalColor())
         
         contentImageView.snp.makeConstraints { (make) in
             make.centerX.equalTo(self)

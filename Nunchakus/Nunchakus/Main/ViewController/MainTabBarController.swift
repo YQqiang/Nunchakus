@@ -46,7 +46,7 @@ extension MainTabBarController {
     fileprivate func addChildController(title: String, imageName: String, viewController: UIViewController) {
         viewController.title = title
         viewController.tabBarItem.image = UIImage(named: imageName)
-        viewController.tabBarItem.selectedImage = UIImage(named: imageName + "-selected")
+        viewController.tabBarItem.selectedImage = UIImage(named: imageName + "-selected")?.image(UIColor.globalColor())
         let nav = BaseNavigationController(rootViewController: viewController)
         addChildViewController(nav)
     }

@@ -56,6 +56,7 @@ extension UIColor {
     /// 全局配色
     class func globalColor() -> UIColor {
         return UIColor(colorHex: 0xea9518)
+//        return UIColor.red
     }
     /// 图片非选中颜色
     class func deselectColor() -> UIColor {

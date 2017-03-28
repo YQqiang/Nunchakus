@@ -129,9 +129,12 @@ extension SelfieViewController: UITableViewDelegate {
             if let doc = HTML(html: html, encoding: .utf8) {
                 let iframe = doc.at_xpath("//div[@class='playbox']/div[@class='wrap']/div[@class='play']/div[@id='a3']/iframe")
                 print("iframe = \(iframe?.toHTML)")
-                let webView = WebViewController()
-                webView.html = iframe?.toHTML
-                _ = self?.navigationController?.pushViewController(webView, animated: true)
+                if let src = iframe?["src"]?.components(separatedBy: "/").last {
+                    print("src = \(src)")
+                }
+//                let webView = WebViewController()
+//                webView.html = iframe?.toHTML
+//                _ = self?.navigationController?.pushViewController(webView, animated: true)
             }
             }, onError: { (error) in
         }, onCompleted: nil) {

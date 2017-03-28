@@ -4,7 +4,7 @@ console.log("request")
 var requestURL = function(window){
     console.log("requestURL")
     window.BuildVideoInfo = {
-        encodeid:"XMTY3NjA4MTAzNg==",
+        encodeid:"XMTY0MTE1NDgyNA",
         _type:"m3u8",
         _url:"http://play.youku.com/play/get.json?vid=419020259&ct=12&callback=BuildVideoInfo.response",
         _vid:"419020259",

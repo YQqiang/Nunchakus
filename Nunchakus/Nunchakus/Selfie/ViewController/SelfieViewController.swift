@@ -17,6 +17,7 @@ private let videoCellID = "videoCellID"
 class SelfieViewController: BaseViewController {
     
     var videoType: VideoType = .zipai
+    var realUrlStr: String?
     
     fileprivate lazy var tableView: UITableView = UITableView(frame: CGRect.zero, style: .plain)
     fileprivate var curPage: Int = 1
@@ -59,6 +60,9 @@ extension SelfieViewController {
         addChildViewController(webViewC)
         view.addSubview(webViewC.view)
         webViewC.view.frame = CGRect.zero
+        webViewC.getRealUrl = { [weak self] (url) -> () in
+            self?.realUrlStr = url
+        }
     }
     
     fileprivate func createMJRefresh() {

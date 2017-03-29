@@ -2,7 +2,6 @@
 console.log("request")
 
 var requestURL = function(window, encodeid){
-    location.href = "yuqiang://+++++" + encodeid
     window.BuildVideoInfo = {
         encodeid:encodeid,
         _type:"m3u8",
@@ -20,8 +19,10 @@ var requestURL = function(window, encodeid){
         this._v = a;
         var b = a.data, c = b.stream;
         if (this.encodeid = b.video.encodeid, !b.security ||!b.security.encrypt_string ||!b.security.ip)
+//            location.href = "yuqiang://encodeidfailed"
             return YKP.sendErrorReport(2004), void YKP.showError(null, "数据解析错误");
         if (!c&&!b.error)
+//            location.href = "yuqiang://encodeidfailed"
             return void YKP.showError(null, "该视频暂不能播放");
         var d = [19, 1, 4, 7, 30, 14, 28, 8, 24, 17, 6, 35, 34, 16, 9, 10, 13, 22, 32, 29, 31, 21, 18, 3, 2, 23, 25, 27, 11, 20, 5, 15, 12, 0, 33, 26], e = rc4(translate(YK.mk.a3 + "o0b" + YKP.userCache.a1, d).toString(), decode64(b.security.encrypt_string)), f = e.split("_");
         YKP.userCache.sid = e.split("_")[0];

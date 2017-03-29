@@ -7,10 +7,11 @@
 //
 
 import UIKit
-import JavaScriptCore
+import Toaster
 
 class WebViewController: BaseViewController, UIWebViewDelegate {
 
+    var getRealUrl: ((_ url: String) -> ())?
     fileprivate lazy var webView: UIWebView = UIWebView()
     var v_id: String? {
         didSet {
@@ -47,8 +48,15 @@ class WebViewController: BaseViewController, UIWebViewDelegate {
     func webView(_ webView: UIWebView, shouldStartLoadWith request: URLRequest, navigationType: UIWebViewNavigationType) -> Bool {
         print("url = \(request.url?.absoluteString)")
         let urlStr = request.url?.absoluteString
+        if let urlStr = urlStr, urlStr.hasPrefix("yuqiang://encodeidfailed") {
+            Hud.showError(status: NSLocalizedString("播放出错", comment: ""))
+            return false
+        }
         if let urlStr = urlStr, urlStr.hasPrefix("http://pl.youku.com") {
-            
+           Toast(text: urlStr).show()
+            if let getRealUrl = getRealUrl {
+                getRealUrl(urlStr)
+            }
             return false
         }
         return true

@@ -35,8 +35,8 @@ class SelfieViewController: BaseViewController {
         createUI()
         createMJRefresh()
         tableView.mj_header.beginRefreshing()
-        resetPlayerManager()
         preparePlayer()
+        resetPlayerManager()
     }
     
     override func loadRequestData() {
@@ -94,8 +94,6 @@ extension SelfieViewController {
             self?.playerInfo.0 = url
             let item = self?.preparePlayerItem(playerInfo: self?.playerInfo)
             if let item = item {
-                self?.resetPlayerManager()
-                
                 self?.player.playWithPlayerItem(item)
             }
         }
@@ -111,8 +109,6 @@ extension SelfieViewController {
 // MARK:- player
 extension SelfieViewController {
     fileprivate func preparePlayer() {
-//        view.addSubview(player)
-//        player.frame = CGRect(x: 0, y: 0, width: 300, height: 400)
         player.delegate = self
         player.backBlock = { [unowned self] (isFullScreen) in
             if isFullScreen == true {
@@ -139,9 +135,9 @@ extension SelfieViewController {
     fileprivate func resetPlayerManager() {
         BMPlayerConf.allowLog = false
         BMPlayerConf.shouldAutoPlay = true
-        BMPlayerConf.tintColor = UIColor.globalColor()
-        BMPlayerConf.topBarShowInCase = .always
+        BMPlayerConf.topBarShowInCase = .horizantalOnly
         BMPlayerConf.loaderType  = NVActivityIndicatorType.ballRotateChase
+        BMPlayerConf.tintColor = UIColor.red
     }
     
     fileprivate func preparePlayerItem(playerInfo: (urlStr: String?, title: String?, cover: String?)?) -> BMPlayerItem? {
@@ -244,7 +240,7 @@ extension SelfieViewController: UITableViewDelegate {
         playerInfo.title = videoModel.title
         playerInfo.cover = videoModel.img
         if let cell = tableView.cellForRow(at: indexPath) as? VideoCell {
-            player.playerLayer?.resetPlayer()
+            player.prepareToDealloc()
             player.removeFromSuperview()
             cell.bgView.addSubview(player)
             player.frame = cell.videoFrame

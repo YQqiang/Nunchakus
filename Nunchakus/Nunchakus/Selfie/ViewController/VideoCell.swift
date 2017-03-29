@@ -53,6 +53,7 @@ class VideoCell: UITableViewCell {
 
 extension VideoCell {
     fileprivate func createUI() {
+        selectionStyle = .none
         bgView.layer.cornerRadius = 5
         contentView.addSubview(bgView)
         bgView.snp.makeConstraints { (make) in
@@ -90,6 +91,7 @@ extension VideoCell {
         }
         
         videoPlayBtn.setImage(#imageLiteral(resourceName: "video-play"), for: .normal)
+        videoPlayBtn.isUserInteractionEnabled = false
         videoPlayBtn.addTarget(self, action: #selector(videoPlayAction), for: .touchUpInside)
         videoPlayBtn.snp.makeConstraints { (make) in
             make.center.equalTo(imgV)

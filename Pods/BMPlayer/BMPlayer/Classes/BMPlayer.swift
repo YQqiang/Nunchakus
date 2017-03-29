@@ -77,7 +77,7 @@ open class BMPlayer: UIView {
     
     fileprivate var currentDefinition = 0
     
-    fileprivate var playerLayer: BMPlayerLayerView?
+    open var playerLayer: BMPlayerLayerView?
     
     fileprivate var controlView: BMPlayerCustomControlView!
     

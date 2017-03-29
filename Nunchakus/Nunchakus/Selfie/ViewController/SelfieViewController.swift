@@ -11,6 +11,7 @@ import RxSwift
 import Kanna
 import MJRefresh
 import BMPlayer
+import NVActivityIndicatorView
 
 private let videoCellID = "videoCellID"
 
@@ -18,6 +19,7 @@ class SelfieViewController: BaseViewController {
     
     var videoType: VideoType = .zipai
     var realUrlStr: String?
+    fileprivate lazy var playerInfo: (String?, title: String?, cover: String?) = ("", "", "")
     
     fileprivate lazy var tableView: UITableView = UITableView(frame: CGRect.zero, style: .plain)
     fileprivate var curPage: Int = 1
@@ -33,11 +35,38 @@ class SelfieViewController: BaseViewController {
         createUI()
         createMJRefresh()
         tableView.mj_header.beginRefreshing()
+        resetPlayerManager()
+        preparePlayer()
     }
     
     override func loadRequestData() {
         tableView.mj_header.beginRefreshing()
     }
+    
+    override func viewWillDisappear(_ animated: Bool) {
+        super.viewWillDisappear(animated)
+//        UIApplication.shared.setStatusBarStyle(UIStatusBarStyle.default, animated: false)
+        // If use the slide to back, remember to call this method
+        // 使用手势返回的时候，调用下面方法
+        player.pause(allowAutoPlay: true)
+    }
+    
+    
+    override func viewWillAppear(_ animated: Bool) {
+        super.viewWillAppear(animated)
+//        UIApplication.shared.setStatusBarStyle(UIStatusBarStyle.lightContent, animated: false)
+        // If use the slide to back, remember to call this method
+        // 使用手势返回的时候，调用下面方法
+        player.autoPlay()
+    }
+    
+    deinit {
+        // If use the slide to back, remember to call this method
+        // 使用手势返回的时候，调用下面方法手动销毁
+        player.prepareToDealloc()
+        print("VideoPlayViewController Deinit")
+    }
+
 }
 
 // MARK:- private func 
@@ -62,6 +91,13 @@ extension SelfieViewController {
         webViewC.view.frame = CGRect.zero
         webViewC.getRealUrl = { [weak self] (url) -> () in
             self?.realUrlStr = url
+            self?.playerInfo.0 = url
+            let item = self?.preparePlayerItem(playerInfo: self?.playerInfo)
+            if let item = item {
+                self?.resetPlayerManager()
+                
+                self?.player.playWithPlayerItem(item)
+            }
         }
     }
     
@@ -69,6 +105,78 @@ extension SelfieViewController {
         tableView.mj_header = MJRefreshNormalHeader.init(refreshingTarget: self , refreshingAction: #selector(loadNewData))
         tableView.mj_header.isAutomaticallyChangeAlpha = true
         tableView.mj_footer = MJRefreshBackNormalFooter.init(refreshingTarget: self, refreshingAction: #selector(loadMoreData))
+    }
+}
+
+// MARK:- player
+extension SelfieViewController {
+    fileprivate func preparePlayer() {
+//        view.addSubview(player)
+//        player.frame = CGRect(x: 0, y: 0, width: 300, height: 400)
+        player.delegate = self
+        player.backBlock = { [unowned self] (isFullScreen) in
+            if isFullScreen == true {
+                return
+            }
+            let _ = self.navigationController?.popViewController(animated: true)
+        }
+        
+        /// Listening to player state changes with Block
+        //Listen to when the player is playing or stopped
+        player.playStateDidChange = { (isPlaying: Bool) in
+            print("| BMPlayer Block | playStateDidChange \(isPlaying)")
+        }
+        
+        //Listen to when the play time changes
+        player.playTimeDidChange = { (currentTime: TimeInterval, totalTime: TimeInterval) in
+            print("| BMPlayer Block | playTimeDidChange currentTime: \(currentTime) totalTime: \(totalTime)")
+        }
+        
+        // player.panGesture.isEnabled = false
+        self.view.layoutIfNeeded()
+    }
+    
+    fileprivate func resetPlayerManager() {
+        BMPlayerConf.allowLog = false
+        BMPlayerConf.shouldAutoPlay = true
+        BMPlayerConf.tintColor = UIColor.globalColor()
+        BMPlayerConf.topBarShowInCase = .always
+        BMPlayerConf.loaderType  = NVActivityIndicatorType.ballRotateChase
+    }
+    
+    fileprivate func preparePlayerItem(playerInfo: (urlStr: String?, title: String?, cover: String?)?) -> BMPlayerItem? {
+        guard let urlStr = playerInfo?.urlStr else {
+            return nil
+        }
+        let resource = BMPlayerItemDefinitionItem(url: URL(string: urlStr)!,
+                                                   definitionName: "标清")
+        let item    = BMPlayerItem(title: playerInfo?.title ?? "",
+                                   resource: [resource],
+                                   cover: playerInfo?.cover ?? "")
+        return item
+    }
+}
+
+// MARK:- BMPlayerDelegate
+extension SelfieViewController: BMPlayerDelegate {
+    // Call back when playing state changed, use to detect is playing or not
+    func bmPlayer(player: BMPlayer, playerIsPlaying playing: Bool) {
+        print("| BMPlayerDelegate | playerIsPlaying | playing - \(playing)")
+    }
+    
+    // Call back when playing state changed, use to detect specefic state like buffering, bufferfinished
+    func bmPlayer(player: BMPlayer, playerStateDidChange state: BMPlayerState) {
+        print("| BMPlayerDelegate | playerStateDidChange | state - \(state)")
+    }
+    
+    // Call back when play time change
+    func bmPlayer(player: BMPlayer, playTimeDidChange currentTime: TimeInterval, totalTime: TimeInterval) {
+        print("| BMPlayerDelegate | playTimeDidChange | \(currentTime) of \(totalTime)")
+    }
+    
+    // Call back when the video loaded duration changed
+    func bmPlayer(player: BMPlayer, loadedTimeDidChange loadedDuration: TimeInterval, totalDuration: TimeInterval) {
+        print("| BMPlayerDelegate | loadedTimeDidChange | \(loadedDuration) of \(totalDuration)")
     }
 }
 
@@ -133,6 +241,14 @@ extension SelfieViewController: UITableViewDelegate {
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         tableView.deselectRow(at: indexPath, animated: false)
         let videoModel = videos[indexPath.row]
+        playerInfo.title = videoModel.title
+        playerInfo.cover = videoModel.img
+        if let cell = tableView.cellForRow(at: indexPath) as? VideoCell {
+            player.playerLayer?.resetPlayer()
+            player.removeFromSuperview()
+            cell.bgView.addSubview(player)
+            player.frame = cell.videoFrame
+        }
         let videoNum = videoModel.video?.components(separatedBy: "/").last
         videoService.request(.video(type: .v, page: Int(videoNum ?? "0") ?? 0)).mapString().showAPIErrorToast().subscribe(onNext: {[weak self] (html) in
             if let doc = HTML(html: html, encoding: .utf8) {

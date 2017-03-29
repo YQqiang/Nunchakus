@@ -15,6 +15,10 @@ class VideoCell: UITableViewCell {
     fileprivate lazy var titleLabel: UILabel = UILabel()
     fileprivate lazy var imgV: UIImageView = UIImageView()
     fileprivate lazy var videoPlayBtn: UIButton = UIButton()
+    lazy var bgView: UIView = UIView()
+    var videoFrame: CGRect {
+        return imgV.bounds
+    }
     
     var videoModel: SelfieModel? {
         didSet {
@@ -49,7 +53,6 @@ class VideoCell: UITableViewCell {
 
 extension VideoCell {
     fileprivate func createUI() {
-        let bgView = UIView()
         bgView.layer.cornerRadius = 5
         contentView.addSubview(bgView)
         bgView.snp.makeConstraints { (make) in

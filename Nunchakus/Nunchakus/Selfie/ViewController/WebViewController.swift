@@ -53,7 +53,6 @@ class WebViewController: BaseViewController, UIWebViewDelegate {
             return false
         }
         if let urlStr = urlStr, urlStr.hasPrefix("http://pl.youku.com") {
-           Toast(text: urlStr).show()
             if let getRealUrl = getRealUrl {
                 getRealUrl(urlStr)
             }

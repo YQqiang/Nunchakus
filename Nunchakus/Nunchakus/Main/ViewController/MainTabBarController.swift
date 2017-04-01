@@ -15,12 +15,12 @@ class MainTabBarController: UITabBarController {
         tabBar.isTranslucent = false
         // Do any additional setup after loading the view.
         view.backgroundColor = UIColor.white
+        let teach = TeachingViewController()
         let selfie = SelfieViewController()
         let stage = StageViewController()
-        let teach = TeachingViewController()
+        addChildController(title: "教学", imageName: "tabbar-teach", viewController: teach)
         addChildController(title: "自拍", imageName: "tabbar-selfie", viewController: selfie)
         addChildController(title: "舞台", imageName: "tabbar-stage", viewController: stage)
-        addChildController(title: "教学", imageName: "tabbar-teach", viewController: teach)
     }
 
     override func didReceiveMemoryWarning() {

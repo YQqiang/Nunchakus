@@ -19,7 +19,7 @@ class SelfieViewController: BaseViewController {
     
     var videoType: VideoType = .zipai
     var realUrlStr: String?
-    var currentIndexPath: IndexPath = IndexPath(row: 0, section: 0)
+    var currentIndexPath: IndexPath = IndexPath(row: 0, section: -1)
     fileprivate lazy var playerInfo: (String?, title: String?, cover: String?) = ("", "", "")
     
     fileprivate lazy var tableView: UITableView = UITableView(frame: CGRect.zero, style: .plain)
@@ -158,22 +158,18 @@ extension SelfieViewController {
 extension SelfieViewController: BMPlayerDelegate {
     // Call back when playing state changed, use to detect is playing or not
     func bmPlayer(player: BMPlayer, playerIsPlaying playing: Bool) {
-        print("| BMPlayerDelegate | playerIsPlaying | playing - \(playing)")
     }
     
     // Call back when playing state changed, use to detect specefic state like buffering, bufferfinished
     func bmPlayer(player: BMPlayer, playerStateDidChange state: BMPlayerState) {
-        print("| BMPlayerDelegate | playerStateDidChange | state - \(state)")
     }
     
     // Call back when play time change
     func bmPlayer(player: BMPlayer, playTimeDidChange currentTime: TimeInterval, totalTime: TimeInterval) {
-        print("| BMPlayerDelegate | playTimeDidChange | \(currentTime) of \(totalTime)")
     }
     
     // Call back when the video loaded duration changed
     func bmPlayer(player: BMPlayer, loadedTimeDidChange loadedDuration: TimeInterval, totalDuration: TimeInterval) {
-        print("| BMPlayerDelegate | loadedTimeDidChange | \(loadedDuration) of \(totalDuration)")
     }
 }
 
@@ -237,11 +233,11 @@ extension SelfieViewController {
 extension SelfieViewController: UITableViewDelegate {
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         tableView.deselectRow(at: indexPath, animated: false)
+        currentIndexPath = indexPath
         let videoModel = videos[indexPath.row]
         playerInfo.title = videoModel.title
         playerInfo.cover = videoModel.img
         if let cell = tableView.cellForRow(at: indexPath) as? VideoCell {
-            currentIndexPath = indexPath
             player.prepareToDealloc()
             player.removeFromSuperview()
             cell.bgView.addSubview(player)
@@ -264,12 +260,6 @@ extension SelfieViewController: UITableViewDelegate {
     }
     
     func tableView(_ tableView: UITableView, willDisplay cell: UITableViewCell, forRowAt indexPath: IndexPath) {
-        let playerCell = tableView.cellForRow(at: currentIndexPath)
-        if let playerCell = playerCell, tableView.visibleCells.contains(playerCell) {
-            player.play()
-        } else {
-            player.pause()
-        }
         guard let videoCell = cell as? VideoCell else {
             return
         }
@@ -277,7 +267,7 @@ extension SelfieViewController: UITableViewDelegate {
         
         if currentIndexPath == indexPath {
             // 当前cell需要播放视屏
-            if view as? BMPlayer == nil {
+            if (view as? BMPlayer) == nil {
                 videoCell.bgView.addSubview(player)
                 player.frame = videoCell.videoFrame
             }
@@ -287,8 +277,15 @@ extension SelfieViewController: UITableViewDelegate {
                 playerV.removeFromSuperview()
             }
         }
+        
+        if let visibleIndexPath = tableView.indexPathsForVisibleRows, visibleIndexPath.contains(currentIndexPath) {
+            if !player.isPlaying {
+                player.play()
+            }
+        } else {
+            player.pause()
+        }
     }
-    
 }
 
 // MARK: - UITableViewDataSource

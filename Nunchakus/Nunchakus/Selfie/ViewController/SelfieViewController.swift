@@ -13,6 +13,17 @@ import MJRefresh
 import BMPlayer
 import NVActivityIndicatorView
 
+enum VideoType {
+    case zipai      // 棍友自拍
+    case biaoyan    // 舞台表演
+    case jiaoxue    // 棍法教学
+    case media      // 媒体关注
+    case movie      // 影视动画
+    case guowai     // 国外聚焦
+    case paoku      // 极限跑酷
+    case v          // 播放视屏
+}
+
 private let videoCellID = "videoCellID"
 
 class SelfieViewController: BaseViewController {

@@ -27,7 +27,7 @@ class SelfieViewController: BaseViewController {
     fileprivate lazy var videos: [SelfieModel] = [SelfieModel]()
     fileprivate lazy var webViewC: WebViewController = WebViewController()
     
-    let player: BMPlayer = BMPlayer()
+    var player: BMPlayer!
     
     let disposeBag = DisposeBag()
     
@@ -36,8 +36,8 @@ class SelfieViewController: BaseViewController {
         createUI()
         createMJRefresh()
         tableView.mj_header.beginRefreshing()
+        setPlayerManager()
         preparePlayer()
-        resetPlayerManager()
     }
     
     override func loadRequestData() {
@@ -46,26 +46,23 @@ class SelfieViewController: BaseViewController {
     
     override func viewWillDisappear(_ animated: Bool) {
         super.viewWillDisappear(animated)
-//        UIApplication.shared.setStatusBarStyle(UIStatusBarStyle.default, animated: false)
-        // If use the slide to back, remember to call this method
-        // 使用手势返回的时候，调用下面方法
-        player.pause(allowAutoPlay: true)
+        if player.isPlaying {
+            player.pause()
+        }
     }
     
     
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
-//        UIApplication.shared.setStatusBarStyle(UIStatusBarStyle.lightContent, animated: false)
-        // If use the slide to back, remember to call this method
-        // 使用手势返回的时候，调用下面方法
-        player.autoPlay()
+        if let visibleIndexPath = tableView.indexPathsForVisibleRows, visibleIndexPath.contains(currentIndexPath) {
+            if !player.isPlaying {
+                player.play()
+            }
+        }
     }
     
     deinit {
-        // If use the slide to back, remember to call this method
-        // 使用手势返回的时候，调用下面方法手动销毁
         player.prepareToDealloc()
-        print("VideoPlayViewController Deinit")
     }
 
 }
@@ -110,6 +107,7 @@ extension SelfieViewController {
 // MARK:- player
 extension SelfieViewController {
     fileprivate func preparePlayer() {
+        player = BMPlayer()
         player.delegate = self
         player.backBlock = { [unowned self] (isFullScreen) in
             if isFullScreen == true {
@@ -117,28 +115,22 @@ extension SelfieViewController {
             }
             let _ = self.navigationController?.popViewController(animated: true)
         }
-        
-        /// Listening to player state changes with Block
-        //Listen to when the player is playing or stopped
         player.playStateDidChange = { (isPlaying: Bool) in
-            print("| BMPlayer Block | playStateDidChange \(isPlaying)")
         }
         
-        //Listen to when the play time changes
         player.playTimeDidChange = { (currentTime: TimeInterval, totalTime: TimeInterval) in
-            print("| BMPlayer Block | playTimeDidChange currentTime: \(currentTime) totalTime: \(totalTime)")
         }
         
-        // player.panGesture.isEnabled = false
+//         player.panGesture.isEnabled = false
         self.view.layoutIfNeeded()
     }
     
-    fileprivate func resetPlayerManager() {
+    fileprivate func setPlayerManager() {
         BMPlayerConf.allowLog = false
         BMPlayerConf.shouldAutoPlay = true
         BMPlayerConf.topBarShowInCase = .horizantalOnly
         BMPlayerConf.loaderType  = NVActivityIndicatorType.ballRotateChase
-        BMPlayerConf.tintColor = UIColor.red
+        BMPlayerConf.tintColor = UIColor.globalColor()
     }
     
     fileprivate func preparePlayerItem(playerInfo: (urlStr: String?, title: String?, cover: String?)?) -> BMPlayerItem? {
@@ -232,8 +224,11 @@ extension SelfieViewController {
 // MARK:- UITableViewDelegate
 extension SelfieViewController: UITableViewDelegate {
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
-        tableView.deselectRow(at: indexPath, animated: false)
+        if currentIndexPath == indexPath {
+            return
+        }
         currentIndexPath = indexPath
+        tableView.deselectRow(at: indexPath, animated: false)
         let videoModel = videos[indexPath.row]
         playerInfo.title = videoModel.title
         playerInfo.cover = videoModel.img

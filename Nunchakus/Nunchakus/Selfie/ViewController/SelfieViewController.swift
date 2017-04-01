@@ -19,6 +19,7 @@ class SelfieViewController: BaseViewController {
     
     var videoType: VideoType = .zipai
     var realUrlStr: String?
+    var currentIndexPath: IndexPath = IndexPath(row: 0, section: 0)
     fileprivate lazy var playerInfo: (String?, title: String?, cover: String?) = ("", "", "")
     
     fileprivate lazy var tableView: UITableView = UITableView(frame: CGRect.zero, style: .plain)
@@ -240,6 +241,7 @@ extension SelfieViewController: UITableViewDelegate {
         playerInfo.title = videoModel.title
         playerInfo.cover = videoModel.img
         if let cell = tableView.cellForRow(at: indexPath) as? VideoCell {
+            currentIndexPath = indexPath
             player.prepareToDealloc()
             player.removeFromSuperview()
             cell.bgView.addSubview(player)
@@ -260,6 +262,33 @@ extension SelfieViewController: UITableViewDelegate {
         }, onCompleted: nil) {
             }.addDisposableTo(disposeBag)
     }
+    
+    func tableView(_ tableView: UITableView, willDisplay cell: UITableViewCell, forRowAt indexPath: IndexPath) {
+        let playerCell = tableView.cellForRow(at: currentIndexPath)
+        if let playerCell = playerCell, tableView.visibleCells.contains(playerCell) {
+            player.play()
+        } else {
+            player.pause()
+        }
+        guard let videoCell = cell as? VideoCell else {
+            return
+        }
+        let view = videoCell.bgView.subviews.last
+        
+        if currentIndexPath == indexPath {
+            // 当前cell需要播放视屏
+            if view as? BMPlayer == nil {
+                videoCell.bgView.addSubview(player)
+                player.frame = videoCell.videoFrame
+            }
+        } else {
+            // 该cell为复用的cell, 需要移除播放器
+            if let playerV = view as? BMPlayer {
+                playerV.removeFromSuperview()
+            }
+        }
+    }
+    
 }
 
 // MARK: - UITableViewDataSource

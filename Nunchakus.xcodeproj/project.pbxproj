@@ -17,6 +17,7 @@
 		2F185BC21E829CF800EDD62B /* BaseModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2F185BC11E829CF800EDD62B /* BaseModel.swift */; };
 		2F185BC51E829F6800EDD62B /* Observable+Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2F185BC31E829F6800EDD62B /* Observable+Extension.swift */; };
 		2F185BC81E82B35D00EDD62B /* VideoCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2F185BC71E82B35D00EDD62B /* VideoCell.swift */; };
+		2F283AAA1E977BDA00D325D9 /* ProfileViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2F283AA91E977BDA00D325D9 /* ProfileViewController.swift */; };
 		2F4087391E83AE68008EF959 /* WebViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2F4087381E83AE68008EF959 /* WebViewController.swift */; };
 		2F77C4161E80F1230055D364 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2F77C4151E80F1230055D364 /* AppDelegate.swift */; };
 		2F77C4201E80F1230055D364 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 2F77C41E1E80F1230055D364 /* LaunchScreen.storyboard */; };
@@ -68,6 +69,7 @@
 		2F185BC11E829CF800EDD62B /* BaseModel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = BaseModel.swift; path = Nunchakus/Nunchakus/Services/BaseModel.swift; sourceTree = SOURCE_ROOT; };
 		2F185BC31E829F6800EDD62B /* Observable+Extension.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "Observable+Extension.swift"; sourceTree = "<group>"; };
 		2F185BC71E82B35D00EDD62B /* VideoCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = VideoCell.swift; sourceTree = "<group>"; };
+		2F283AA91E977BDA00D325D9 /* ProfileViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ProfileViewController.swift; sourceTree = "<group>"; };
 		2F4087381E83AE68008EF959 /* WebViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = WebViewController.swift; sourceTree = "<group>"; };
 		2F77C4121E80F1230055D364 /* Nunchakus.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Nunchakus.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		2F77C4151E80F1230055D364 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
@@ -125,6 +127,22 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		2F283AA71E977BCA00D325D9 /* Profile */ = {
+			isa = PBXGroup;
+			children = (
+				2F283AA81E977BCA00D325D9 /* ViewController */,
+			);
+			path = Profile;
+			sourceTree = "<group>";
+		};
+		2F283AA81E977BCA00D325D9 /* ViewController */ = {
+			isa = PBXGroup;
+			children = (
+				2F283AA91E977BDA00D325D9 /* ProfileViewController.swift */,
+			);
+			path = ViewController;
+			sourceTree = "<group>";
+		};
 		2F77C4091E80F1230055D364 = {
 			isa = PBXGroup;
 			children = (
@@ -210,6 +228,7 @@
 				C707A3761E814EE400278E40 /* Base */,
 				C707A37A1E814EE400278E40 /* Main */,
 				C707A37E1E814EE400278E40 /* Selfie */,
+				2F283AA71E977BCA00D325D9 /* Profile */,
 				C707A3821E814EE400278E40 /* Services */,
 				C707A38E1E814EE400278E40 /* Utils */,
 			);
@@ -590,6 +609,7 @@
 				2F4087391E83AE68008EF959 /* WebViewController.swift in Sources */,
 				C707A39D1E81532000278E40 /* SelfieViewController.swift in Sources */,
 				2F185BC01E824CDF00EDD62B /* SelfieModel.swift in Sources */,
+				2F283AAA1E977BDA00D325D9 /* ProfileViewController.swift in Sources */,
 				2F185BC21E829CF800EDD62B /* BaseModel.swift in Sources */,
 				2F9E40301E8521350078BE57 /* youku.swift in Sources */,
 				2F185BB81E82254F00EDD62B /* Hud.swift in Sources */,

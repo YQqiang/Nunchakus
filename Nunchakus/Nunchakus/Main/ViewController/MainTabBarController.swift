@@ -15,18 +15,8 @@ class MainTabBarController: UITabBarController {
         tabBar.isTranslucent = false
         // Do any additional setup after loading the view.
         view.backgroundColor = UIColor.white
-        let teach = SelfieViewController()
-        teach.videoType = .jiaoxue
-        let selfie = SelfieViewController()
-        selfie.videoType = .zipai
-        let stage = SelfieViewController()
-        stage.videoType = .biaoyan
-        let videoVC = VideoViewController()
-        addChildController(title: "haha", imageName: "tabbar-stage", viewController: videoVC)
-        addChildController(title: "教学", imageName: "tabbar-teach", viewController: teach)
-        addChildController(title: "自拍", imageName: "tabbar-selfie", viewController: selfie)
-        addChildController(title: "舞台", imageName: "tabbar-stage", viewController: stage)
-        
+        addChildController(title: "双节棍", imageName: "tabbar_video", viewController: VideoViewController())
+        addChildController(title: "我", imageName: "tabbar_setting", viewController: ProfileViewController())
     }
 
     override func didReceiveMemoryWarning() {
@@ -52,7 +42,7 @@ extension MainTabBarController {
     fileprivate func addChildController(title: String, imageName: String, viewController: UIViewController) {
         viewController.title = title
         viewController.tabBarItem.image = UIImage(named: imageName)
-        viewController.tabBarItem.selectedImage = UIImage(named: imageName + "-selected")?.image(UIColor.globalColor())
+        viewController.tabBarItem.selectedImage = UIImage(named: imageName + "_selected")?.image(UIColor.globalColor())
         let nav = BaseNavigationController(rootViewController: viewController)
         addChildViewController(nav)
     }

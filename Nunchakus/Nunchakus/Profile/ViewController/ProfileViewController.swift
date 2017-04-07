@@ -10,27 +10,16 @@ import UIKit
 
 class ProfileViewController: BaseViewController {
 
+    fileprivate lazy var iconImageV: UIImageView = UIImageView()
     override func viewDidLoad() {
         super.viewDidLoad()
-
-        // Do any additional setup after loading the view.
+        emptyDataView.isHidden = true
         navigationItem.title = "我的"
+        view.addSubview(iconImageV)
+        iconImageV.image = UIImage(named: "webwxgetmsgimg (1)")
+        iconImageV.snp.makeConstraints { (make) in
+           make.edges.equalTo(view)
+        }
     }
-
-    override func didReceiveMemoryWarning() {
-        super.didReceiveMemoryWarning()
-        // Dispose of any resources that can be recreated.
-    }
-    
-
-    /*
-    // MARK: - Navigation
-
-    // In a storyboard-based application, you will often want to do a little preparation before navigation
-    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-        // Get the new view controller using segue.destinationViewController.
-        // Pass the selected object to the new view controller.
-    }
-    */
 
 }

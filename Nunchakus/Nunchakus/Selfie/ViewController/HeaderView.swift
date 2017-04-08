@@ -29,7 +29,16 @@ class HeaderView: UIView {
         super.init(frame: frame)
         categoryScrollView = CategoryScrollView()
         self.addSubview(categoryScrollView)
-        self.backgroundColor = UIColor.gray
+        self.backgroundColor = UIColor.clear
+        
+        let lineView = UIView()
+        lineView.backgroundColor = UIColor.globalColor()
+        self.addSubview(lineView)
+        lineView.snp.makeConstraints { (make) in
+            make.left.right.bottom.equalTo(self)
+            make.height.equalTo(3)
+        }
+        
         categoryScrollView.categoryDelegate = self
         categoryScrollView.snp.makeConstraints({ (make) in
             make.edges.equalTo(self)

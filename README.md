@@ -2,7 +2,7 @@
 ## 抓取网页[双节棍吧](http://www.sjg8.com/)中的内容, 解析优酷视频地址.
 
 ## Nunchanus APP 预览
-![homePage1](https://github.com/YQqiang/Nunchakus/blob/master/homePage1.png =320*480)
+![homePage1](https://github.com/YQqiang/Nunchakus/blob/master/homePage1.png =320x480)
 
 ![homePage2](https://github.com/YQqiang/Nunchakus/blob/master/homePage2.png =320*480)
 

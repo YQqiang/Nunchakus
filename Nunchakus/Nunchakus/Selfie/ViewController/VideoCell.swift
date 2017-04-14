@@ -13,7 +13,7 @@ class VideoCell: UITableViewCell {
 
     fileprivate lazy var timeLabel: UILabel = UILabel()
     fileprivate lazy var titleLabel: UILabel = UILabel()
-    fileprivate lazy var imgV: UIImageView = UIImageView()
+    lazy var imgV: UIImageView = UIImageView()
     fileprivate lazy var videoPlayBtn: UIButton = UIButton()
     lazy var bgView: UIView = UIView()
     var videoFrame: CGRect {

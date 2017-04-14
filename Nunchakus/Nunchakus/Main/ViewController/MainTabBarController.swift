@@ -18,6 +18,10 @@ class MainTabBarController: UITabBarController {
         addChildController(title: "双节棍", imageName: "tabbar_video", viewController: VideoViewController())
         addChildController(title: "我", imageName: "tabbar_setting", viewController: ProfileViewController())
     }
+    
+    override var supportedInterfaceOrientations: UIInterfaceOrientationMask {
+        return UIInterfaceOrientationMask.portrait
+    }
 
     override func didReceiveMemoryWarning() {
         super.didReceiveMemoryWarning()

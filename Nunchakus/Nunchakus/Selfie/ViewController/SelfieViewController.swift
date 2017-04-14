@@ -37,6 +37,7 @@ class SelfieViewController: BaseViewController {
     fileprivate var curPage: Int = 1
     fileprivate lazy var videos: [SelfieModel] = [SelfieModel]()
     fileprivate lazy var webViewC: WebViewController = WebViewController()
+    fileprivate lazy var fullScreenVC: FullScreenPlayerController = FullScreenPlayerController()
     
     var player: BMPlayer!
     
@@ -120,7 +121,41 @@ extension SelfieViewController {
 // MARK:- player
 extension SelfieViewController {
     fileprivate func preparePlayer() {
-        player = BMPlayer()
+        let playerControlView = PlayerControlView()
+        playerControlView.fullScreenBlock = {[weak self] (isFullScreen) in
+            print("全屏或缩放----\(isFullScreen)")
+            guard let player = self?.player else {
+                return
+            }
+            guard let _ = player.superview else {
+                return
+            }
+            guard let fullScreenVC = self?.fullScreenVC else {
+                return
+            }
+            guard let currentIndexPath = self?.currentIndexPath else {
+                return
+            }
+            if isFullScreen, self?.fullScreenVC.presentingViewController == nil {
+                self?.fullScreenVC.view.addSubview(player)
+                player.snp.remakeConstraints { (make) in
+                    make.top.equalTo((self?.fullScreenVC.view.snp.top)!)
+                    make.left.equalTo((self?.fullScreenVC.view.snp.left)!)
+                    make.right.equalTo((self?.fullScreenVC.view.snp.right)!)
+                    make.height.equalTo((self?.fullScreenVC.view.snp.width)!).multipliedBy(9.0/16.0)
+                }
+                self?.present(fullScreenVC, animated: true, completion: nil)
+            } else if !isFullScreen, let _ = self?.fullScreenVC.presentingViewController {
+                self?.fullScreenVC.dismiss(animated: true, completion: nil)
+                if let cell = self?.tableView.cellForRow(at: currentIndexPath) as? VideoCell {
+                    cell.bgView.addSubview(player)
+                    player.snp.remakeConstraints { (make) in
+                        make.edges.equalTo(cell.imgV)
+                    }
+                }
+            }
+        }
+        player = BMPlayer(customControllView: playerControlView)
         player.delegate = self
         player.backBlock = { [unowned self] (isFullScreen) in
             if isFullScreen == true {
@@ -249,7 +284,9 @@ extension SelfieViewController: UITableViewDelegate {
             player.prepareToDealloc()
             player.removeFromSuperview()
             cell.bgView.addSubview(player)
-            player.frame = cell.videoFrame
+            player.snp.remakeConstraints { (make) in
+                make.edges.equalTo(cell.imgV)
+            }
         }
         let videoNum = videoModel.video?.components(separatedBy: "/").last
         videoService.request(.video(type: .v, page: Int(videoNum ?? "0") ?? 0)).mapString().showAPIErrorToast().subscribe(onNext: {[weak self] (html) in
@@ -277,7 +314,9 @@ extension SelfieViewController: UITableViewDelegate {
             // 当前cell需要播放视屏
             if (view as? BMPlayer) == nil {
                 videoCell.bgView.addSubview(player)
-                player.frame = videoCell.videoFrame
+                player.snp.remakeConstraints { (make) in
+                    make.edges.equalTo(videoCell.imgV)
+                }
             }
         } else {
             // 该cell为复用的cell, 需要移除播放器

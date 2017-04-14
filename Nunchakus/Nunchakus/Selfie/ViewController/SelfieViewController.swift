@@ -92,7 +92,8 @@ extension SelfieViewController {
         tableView.contentInset = UIEdgeInsetsMake(8, 0, 0, 0)
         tableView.contentOffset = CGPoint(x: 0, y: -8)
         tableView.snp.makeConstraints { (make) in
-            make.edges.equalTo(self.view)
+            make.top.left.right.equalTo(self.view)
+            make.bottom.equalTo(self.view).offset(-148)
         }
         
         addChildViewController(webViewC)

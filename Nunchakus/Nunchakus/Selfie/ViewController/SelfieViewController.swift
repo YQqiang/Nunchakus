@@ -103,9 +103,9 @@ extension SelfieViewController {
         webViewC.getRealUrl = { [weak self] (url) -> () in
             self?.realUrlStr = url
             self?.playerInfo.0 = url
-            let item = self?.preparePlayerItem(playerInfo: self?.playerInfo)
-            if let item = item {
-                self?.player.playWithPlayerItem(item)
+            let asset = self?.preparePlayerItem(playerInfo: self?.playerInfo)
+            if let asset = asset {
+                self?.player.setVideo(resource: asset)
             }
         }
     }
@@ -146,16 +146,16 @@ extension SelfieViewController {
         BMPlayerConf.tintColor = UIColor.globalColor()
     }
     
-    fileprivate func preparePlayerItem(playerInfo: (urlStr: String?, title: String?, cover: String?)?) -> BMPlayerItem? {
+    fileprivate func preparePlayerItem(playerInfo: (urlStr: String?, title: String?, cover: String?)?) -> BMPlayerResource? {
         guard let urlStr = playerInfo?.urlStr else {
             return nil
         }
-        let resource = BMPlayerItemDefinitionItem(url: URL(string: urlStr)!,
-                                                   definitionName: "标清")
-        let item    = BMPlayerItem(title: playerInfo?.title ?? "",
-                                   resource: [resource],
-                                   cover: playerInfo?.cover ?? "")
-        return item
+        let resource = BMPlayerResourceDefinition(url: URL(string: urlStr)!,
+                                                   definition: "标清")
+        let asset    = BMPlayerResource(name: playerInfo?.title ?? "",
+                                   definitions: [resource],
+                                   cover: URL(string: playerInfo?.cover ?? ""))
+        return asset
     }
 }
 

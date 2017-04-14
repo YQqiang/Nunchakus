@@ -28,6 +28,7 @@
 		2F962FB41E965D30005C91DF /* ContentCollectionView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2F962FB21E965D30005C91DF /* ContentCollectionView.swift */; };
 		2F9E40301E8521350078BE57 /* youku.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2F9E402F1E8521350078BE57 /* youku.swift */; };
 		2FC40A7F1E8B839A001C664C /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 2FC40A7E1E8B839A001C664C /* Assets.xcassets */; };
+		2FC9508B1EA0ADE6002F9965 /* PlayerControlView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2FC9508A1EA0ADE6002F9965 /* PlayerControlView.swift */; };
 		2FF2228E1E86A8B200D2FBCD /* test.html in Resources */ = {isa = PBXBuildFile; fileRef = 2FF2228B1E86A8B200D2FBCD /* test.html */; };
 		2FF2228F1E86A8B200D2FBCD /* jquery-3.1.1.js in Resources */ = {isa = PBXBuildFile; fileRef = 2FF2228C1E86A8B200D2FBCD /* jquery-3.1.1.js */; };
 		2FF222901E86A8B200D2FBCD /* requestURL.js in Resources */ = {isa = PBXBuildFile; fileRef = 2FF2228D1E86A8B200D2FBCD /* requestURL.js */; };
@@ -85,6 +86,7 @@
 		2F962FB21E965D30005C91DF /* ContentCollectionView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ContentCollectionView.swift; sourceTree = "<group>"; };
 		2F9E402F1E8521350078BE57 /* youku.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = youku.swift; sourceTree = "<group>"; };
 		2FC40A7E1E8B839A001C664C /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
+		2FC9508A1EA0ADE6002F9965 /* PlayerControlView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PlayerControlView.swift; sourceTree = "<group>"; };
 		2FF2228B1E86A8B200D2FBCD /* test.html */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.html; path = test.html; sourceTree = "<group>"; };
 		2FF2228C1E86A8B200D2FBCD /* jquery-3.1.1.js */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.javascript; path = "jquery-3.1.1.js"; sourceTree = "<group>"; };
 		2FF2228D1E86A8B200D2FBCD /* requestURL.js */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.javascript; path = requestURL.js; sourceTree = "<group>"; };
@@ -329,6 +331,7 @@
 				2F962FB11E965D30005C91DF /* HeaderView.swift */,
 				2F962FB21E965D30005C91DF /* ContentCollectionView.swift */,
 				2F89F9F21E965ED1007C4658 /* NewsContentCell.swift */,
+				2FC9508A1EA0ADE6002F9965 /* PlayerControlView.swift */,
 			);
 			path = ViewController;
 			sourceTree = "<group>";
@@ -605,6 +608,7 @@
 				2F4087391E83AE68008EF959 /* WebViewController.swift in Sources */,
 				C707A39D1E81532000278E40 /* SelfieViewController.swift in Sources */,
 				2F185BC01E824CDF00EDD62B /* SelfieModel.swift in Sources */,
+				2FC9508B1EA0ADE6002F9965 /* PlayerControlView.swift in Sources */,
 				2F283AAA1E977BDA00D325D9 /* ProfileViewController.swift in Sources */,
 				2F185BC21E829CF800EDD62B /* BaseModel.swift in Sources */,
 				2F9E40301E8521350078BE57 /* youku.swift in Sources */,

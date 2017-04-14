@@ -58,8 +58,9 @@ extension VideoCell {
         contentView.addSubview(bgView)
         bgView.snp.makeConstraints { (make) in
             make.top.equalTo(contentView)
-            make.left.equalTo(contentView).offset(8)
-            make.bottom.right.equalTo(contentView).offset(-8)
+            make.left.equalTo(contentView).offset(0)
+            make.right.equalTo(contentView)
+            make.bottom.equalTo(contentView).offset(-8)
         }
         
         let superView = bgView
@@ -88,6 +89,14 @@ extension VideoCell {
             make.right.equalTo(imgV).offset(-8)
             make.top.equalTo(imgV.snp.bottom).offset(8)
             make.bottom.equalTo(superView).offset(-8)
+        }
+        
+        let lineView = UIView()
+        lineView.backgroundColor = UIColor.globalColor()
+        superView.addSubview(lineView)
+        lineView.snp.makeConstraints { (make) in
+            make.left.right.bottom.equalTo(lineView.superview!)
+            make.height.equalTo(1)
         }
         
         videoPlayBtn.setImage(#imageLiteral(resourceName: "video-play"), for: .normal)

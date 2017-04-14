@@ -9,8 +9,14 @@
 import UIKit
 
 class EmptyDataView: UIView {
-
-    var contentText: String = NSLocalizedString("暂无数据", comment: "") {
+    
+    var titleText: String = NSLocalizedString("暂无数据", comment: "") {
+        didSet {
+            titleTextLabel.text = titleText
+        }
+    }
+    
+    var contentText: String = NSLocalizedString("请点击屏幕刷新", comment: "") {
         didSet {
             contentTextLabel.text = contentText
         }
@@ -25,6 +31,7 @@ class EmptyDataView: UIView {
     
     // MARK:- 控件
     fileprivate lazy var contentImageView: UIImageView = UIImageView()
+    fileprivate lazy var titleTextLabel: UILabel = UILabel()
     fileprivate lazy var contentTextLabel: UILabel = UILabel()
     override init(frame: CGRect) {
         super.init(frame: frame)
@@ -49,9 +56,15 @@ extension EmptyDataView {
     fileprivate func createUI() {
         isHidden = false
         addSubview(contentImageView)
+        addSubview(titleTextLabel)
         addSubview(contentTextLabel)
         
+        titleTextLabel.text = titleText
+        titleTextLabel.textAlignment = .center
+        titleTextLabel.textColor = UIColor.globalColor()
+        
         contentTextLabel.text = contentText
+        contentTextLabel.font = UIFont.systemFont(ofSize: 14)
         contentTextLabel.textAlignment = .center
         contentTextLabel.textColor = UIColor.globalColor()
         contentImageView.image = contentImage.image(UIColor.globalColor())
@@ -60,8 +73,12 @@ extension EmptyDataView {
             make.centerX.equalTo(self)
             make.centerY.equalTo(self).offset(-80)
         }
-        contentTextLabel.snp.makeConstraints { (make) in
+        titleTextLabel.snp.makeConstraints { (make) in
             make.top.equalTo(contentImageView.snp.bottom).offset(16)
+            make.centerX.equalTo(contentImageView)
+        }
+        contentTextLabel.snp.makeConstraints { (make) in
+            make.top.equalTo(titleTextLabel.snp.bottom).offset(16)
             make.centerX.equalTo(contentImageView)
         }
     }

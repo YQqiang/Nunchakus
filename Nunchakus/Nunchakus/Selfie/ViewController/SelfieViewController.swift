@@ -81,6 +81,7 @@ class SelfieViewController: BaseViewController {
 // MARK:- private func 
 extension SelfieViewController {
     fileprivate func createUI() {
+        
         tableView.delegate = self
         tableView.dataSource = self
         tableView.rowHeight = UITableViewAutomaticDimension

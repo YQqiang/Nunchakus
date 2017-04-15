@@ -15,5 +15,6 @@ pod 'RxCocoa'
 pod 'Moya/RxSwift'
 pod 'Kingfisher'
 pod 'BMPlayer'
+pod 'ReachabilitySwift'
 
 end

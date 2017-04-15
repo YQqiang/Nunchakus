@@ -8,12 +8,20 @@
 
 import UIKit
 import Toaster
+import ReachabilitySwift
+
+enum NetStatus {
+    case notNet         // 网络不可用
+    case wifiNet        // WiFi无线网络
+    case cellularNet    // 蜂窝数据
+}
 
 @UIApplicationMain
 class AppDelegate: UIResponder, UIApplicationDelegate {
 
     var window: UIWindow?
-
+    var netStatus: NetStatus = .notNet
+    fileprivate let reachability = Reachability()!
     
     func application(_ application: UIApplication, didFinishLaunchingWithOptions launchOptions: [UIApplicationLaunchOptionsKey: Any]?) -> Bool {
         // Override point for customization after application launch.
@@ -22,6 +30,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         ToastView.appearance().backgroundColor = UIColor.globalColor()
         ToastView.appearance().textInsets = UIEdgeInsetsMake(5, 5, 5, 5)
         ToastView.appearance().font = UIFont.systemFont(ofSize: 17)
+        ToastView.appearance().textColor = UIColor.black
         ToastView.appearance().bottomOffsetPortrait = 65
         ToastView.appearance().bottomOffsetLandscape = 65
         
@@ -30,6 +39,9 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         window?.makeKeyAndVisible()
         window?.rootViewController = MainTabBarController()
         UIApplication.shared.statusBarStyle = .lightContent
+        
+        reachabilityAction()
+        
         return true
     }
 
@@ -54,7 +66,38 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
     func applicationWillTerminate(_ application: UIApplication) {
         // Called when the application is about to terminate. Save data if appropriate. See also applicationDidEnterBackground:.
     }
+    
+    deinit {
+        reachability.stopNotifier()
+    }
 
+}
 
+extension AppDelegate {
+    fileprivate func reachabilityAction() {
+        do {
+            try reachability.startNotifier()
+        } catch {
+            print("Unable to start notifier")
+        }
+        reachability.whenReachable = {[weak self] reachability in
+            // this is called on a background thread, but UI updates must
+            // be on the main thread, like this:
+            DispatchQueue.main.async {
+            }
+            if reachability.isReachableViaWiFi {
+                // wifi
+                self?.netStatus = .wifiNet
+            } else {
+                // 蜂窝移动数据
+                self?.netStatus = .cellularNet
+            }
+        }
+        reachability.whenUnreachable = {[weak self] reachability in
+            self?.netStatus = .notNet
+//            DispatchQueue.main.async {
+//            }
+        }
+    }
 }
 

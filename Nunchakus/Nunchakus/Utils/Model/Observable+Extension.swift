@@ -14,7 +14,13 @@ extension Observable {
     func showAPIErrorToast() -> Observable<Element> {
         return self.do(onNext: { (event) in
         }, onError: { (error) in
-            Toast(text: "\(error.localizedDescription)").show()
+            guard let appDelegate = UIApplication.shared.delegate as? AppDelegate else {
+                Toast(text: "\(error.localizedDescription)").show()
+                return
+            }
+            if appDelegate.netStatus == .notNet {
+                Toast(text: NSLocalizedString("当前网络不可用", comment: "")).show()
+            }
         }, onCompleted: {
         }, onSubscribe: {
         }, onDispose: {

@@ -12,6 +12,7 @@ import Kanna
 import MJRefresh
 import BMPlayer
 import NVActivityIndicatorView
+import Toaster
 
 enum VideoType {
     case zipai      // 棍友自拍
@@ -38,6 +39,13 @@ class SelfieViewController: BaseViewController {
     fileprivate lazy var videos: [SelfieModel] = [SelfieModel]()
     fileprivate lazy var webViewC: WebViewController = WebViewController()
     fileprivate lazy var fullScreenVC: FullScreenPlayerController = FullScreenPlayerController()
+    fileprivate lazy var isPlayForCellular: Bool = false
+    var netStatus: NetStatus {
+        guard let appDelegate = UIApplication.shared.delegate as? AppDelegate else {
+            return .notNet
+        }
+        return appDelegate.netStatus
+    }
     
     var player: BMPlayer!
     
@@ -47,6 +55,7 @@ class SelfieViewController: BaseViewController {
         super.viewDidLoad()
         createUI()
         createMJRefresh()
+        
         tableView.mj_header.beginRefreshing()
         setPlayerManager()
         preparePlayer()
@@ -115,6 +124,22 @@ extension SelfieViewController {
         tableView.mj_header = MJRefreshNormalHeader.init(refreshingTarget: self , refreshingAction: #selector(loadNewData))
         tableView.mj_header.isAutomaticallyChangeAlpha = true
         tableView.mj_footer = MJRefreshBackNormalFooter.init(refreshingTarget: self, refreshingAction: #selector(loadMoreData))
+    }
+    
+    fileprivate func reachabilityAction() {
+        let alertVC = UIAlertController(title: NSLocalizedString("提示", comment: ""), message: NSLocalizedString("您当前正在使用2G/3G/4G网络, 是否继续播放?", comment: ""), preferredStyle: .alert)
+        let cancel = UIAlertAction(title: NSLocalizedString("取消播放", comment: ""), style: .cancel) { (action) in
+            self.isPlayForCellular = false
+            CFRunLoopStop(CFRunLoopGetCurrent())
+        }
+        let confirm = UIAlertAction(title: NSLocalizedString("继续播放", comment: ""), style: .default) { (action) in
+            self.isPlayForCellular = true
+            CFRunLoopStop(CFRunLoopGetCurrent())
+        }
+        alertVC.addAction(cancel)
+        alertVC.addAction(confirm)
+        self.present(alertVC, animated: true, completion: nil)
+        CFRunLoopRun()
     }
 }
 
@@ -272,8 +297,18 @@ extension SelfieViewController {
 // MARK:- UITableViewDelegate
 extension SelfieViewController: UITableViewDelegate {
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
-        if currentIndexPath == indexPath {
+        if currentIndexPath == indexPath, player.superview != nil {
             return
+        }
+        if netStatus == .notNet {
+            Toast(text: NSLocalizedString("当前网络不可用", comment: "")).show()
+            return
+        }
+        if netStatus == .cellularNet{
+            reachabilityAction()
+            if !isPlayForCellular {
+                return
+            }
         }
         currentIndexPath = indexPath
         tableView.deselectRow(at: indexPath, animated: false)
@@ -298,8 +333,9 @@ extension SelfieViewController: UITableViewDelegate {
                     self?.webViewC.v_id = src
                 }
             }
-            }, onError: { (error) in
-                Hud.showError(status: NSLocalizedString("视屏地址解析出错", comment: ""))
+            }, onError: {[weak self] (error) in
+                self?.player.prepareToDealloc()
+                self?.player.removeFromSuperview()
         }, onCompleted: nil) {
             }.addDisposableTo(disposeBag)
     }

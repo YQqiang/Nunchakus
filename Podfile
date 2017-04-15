@@ -16,5 +16,6 @@ pod 'Moya/RxSwift'
 pod 'Kingfisher'
 pod 'BMPlayer'
 pod 'ReachabilitySwift'
+pod 'Reveal-SDK','~>4', :configurations => ['Debug']
 
 end

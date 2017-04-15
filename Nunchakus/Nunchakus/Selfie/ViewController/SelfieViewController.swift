@@ -55,7 +55,7 @@ class SelfieViewController: BaseViewController {
         super.viewDidLoad()
         createUI()
         createMJRefresh()
-        
+//        tableView.isUserInteractionEnabled = false
         tableView.mj_header.beginRefreshing()
         setPlayerManager()
         preparePlayer()
@@ -85,6 +85,10 @@ class SelfieViewController: BaseViewController {
     deinit {
         player.prepareToDealloc()
     }
+    
+//    override func touchesBegan(_ touches: Set<UITouch>, with event: UIEvent?) {
+//        reachabilityAction()
+//    }
 
 }
 
@@ -138,7 +142,7 @@ extension SelfieViewController {
         }
         alertVC.addAction(cancel)
         alertVC.addAction(confirm)
-        self.present(alertVC, animated: true, completion: nil)
+        present(alertVC, animated: true, completion: nil)
         CFRunLoopRun()
     }
 }
@@ -194,7 +198,7 @@ extension SelfieViewController {
         player.playTimeDidChange = { (currentTime: TimeInterval, totalTime: TimeInterval) in
         }
         
-//         player.panGesture.isEnabled = false
+         player.panGesture.isEnabled = false
         self.view.layoutIfNeeded()
     }
     
@@ -297,47 +301,8 @@ extension SelfieViewController {
 // MARK:- UITableViewDelegate
 extension SelfieViewController: UITableViewDelegate {
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
-        if currentIndexPath == indexPath, player.superview != nil {
-            return
-        }
-        if netStatus == .notNet {
-            Toast(text: NSLocalizedString("当前网络不可用", comment: "")).show()
-            return
-        }
-        if netStatus == .cellularNet{
-            reachabilityAction()
-            if !isPlayForCellular {
-                return
-            }
-        }
-        currentIndexPath = indexPath
-        tableView.deselectRow(at: indexPath, animated: false)
-        let videoModel = videos[indexPath.row]
-        playerInfo.title = videoModel.title
-        playerInfo.cover = videoModel.img
-        if let cell = tableView.cellForRow(at: indexPath) as? VideoCell {
-            player.prepareToDealloc()
-            player.removeFromSuperview()
-            cell.bgView.addSubview(player)
-            player.snp.remakeConstraints { (make) in
-                make.edges.equalTo(cell.imgV)
-            }
-        }
-        let videoNum = videoModel.video?.components(separatedBy: "/").last
-        videoService.request(.video(type: .v, page: Int(videoNum ?? "0") ?? 0)).mapString().showAPIErrorToast().subscribe(onNext: {[weak self] (html) in
-            if let doc = HTML(html: html, encoding: .utf8) {
-                let iframe = doc.at_xpath("//div[@class='playbox']/div[@class='wrap']/div[@class='play']/div[@id='a3']/iframe")
-                print("iframe = \(iframe?.toHTML)")
-                if let src = iframe?["src"]?.components(separatedBy: "/").last {
-                    print("src = \(src)")
-                    self?.webViewC.v_id = src
-                }
-            }
-            }, onError: {[weak self] (error) in
-                self?.player.prepareToDealloc()
-                self?.player.removeFromSuperview()
-        }, onCompleted: nil) {
-            }.addDisposableTo(disposeBag)
+        
+        
     }
     
     func tableView(_ tableView: UITableView, willDisplay cell: UITableViewCell, forRowAt indexPath: IndexPath) {
@@ -380,6 +345,54 @@ extension SelfieViewController: UITableViewDataSource {
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cell = tableView.dequeueReusableCell(withIdentifier: videoCellID) as! VideoCell
+        cell.playClosure = {[weak self] in
+            self?.reachabilityAction()
+            if !(self?.isPlayForCellular)! {
+                return
+            }
+            if self?.currentIndexPath == indexPath, self?.player.superview != nil {
+                return
+            }
+            if self?.netStatus == .notNet {
+                Toast(text: NSLocalizedString("当前网络不可用", comment: "")).show()
+                return
+            }
+            if self?.netStatus == .cellularNet{
+                self?.reachabilityAction()
+                if !(self?.isPlayForCellular)! {
+                    return
+                }
+            }
+            self?.currentIndexPath = indexPath
+            tableView.deselectRow(at: indexPath, animated: false)
+            let videoModel = self?.videos[indexPath.row]
+            self?.playerInfo.title = videoModel?.title
+            self?.playerInfo.cover = videoModel?.img
+            if let cell = tableView.cellForRow(at: indexPath) as? VideoCell {
+                self?.player.prepareToDealloc()
+                self?.player.removeFromSuperview()
+                cell.bgView.addSubview((self?.player)!)
+                self?.player.snp.remakeConstraints { (make) in
+                    make.edges.equalTo(cell.imgV)
+                }
+            }
+            let videoNum = videoModel?.video?.components(separatedBy: "/").last
+            videoService.request(.video(type: .v, page: Int(videoNum ?? "0") ?? 0)).mapString().showAPIErrorToast().subscribe(onNext: {[weak self] (html) in
+                if let doc = HTML(html: html, encoding: .utf8) {
+                    let iframe = doc.at_xpath("//div[@class='playbox']/div[@class='wrap']/div[@class='play']/div[@id='a3']/iframe")
+                    print("iframe = \(iframe?.toHTML)")
+                    if let src = iframe?["src"]?.components(separatedBy: "/").last {
+                        print("src = \(src)")
+                        self?.webViewC.v_id = src
+                    }
+                }
+                }, onError: {[weak self] (error) in
+                    self?.player.prepareToDealloc()
+                    self?.player.removeFromSuperview()
+                    Hud.showError(status: NSLocalizedString("视屏加载失败, 请检查网络是否可用", comment: ""))
+            }, onCompleted: nil) {
+                }.addDisposableTo((self?.disposeBag)!)
+        }
         cell.videoModel = videos[indexPath.row]
         return cell
     }

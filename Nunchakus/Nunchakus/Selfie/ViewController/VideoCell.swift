@@ -11,6 +11,7 @@ import Kingfisher
 
 class VideoCell: UITableViewCell {
 
+    var playClosure: (() -> (Void))?
     fileprivate lazy var timeLabel: UILabel = UILabel()
     fileprivate lazy var titleLabel: UILabel = UILabel()
     lazy var imgV: UIImageView = UIImageView()
@@ -100,7 +101,6 @@ extension VideoCell {
         }
         
         videoPlayBtn.setImage(#imageLiteral(resourceName: "video-play"), for: .normal)
-        videoPlayBtn.isUserInteractionEnabled = false
         videoPlayBtn.addTarget(self, action: #selector(videoPlayAction), for: .touchUpInside)
         videoPlayBtn.snp.makeConstraints { (make) in
             make.center.equalTo(imgV)
@@ -112,5 +112,8 @@ extension VideoCell {
 extension VideoCell {
     @objc fileprivate func videoPlayAction() {
         print(#function, #line)
+        if let playClosure = playClosure {
+            playClosure()
+        }
     }
 }

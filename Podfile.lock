@@ -15,6 +15,7 @@ PODS:
   - NVActivityIndicatorView (3.6.0)
   - ReachabilitySwift (3)
   - Result (3.2.1)
+  - Reveal-SDK (4)
   - RxCocoa (3.4.0):
     - RxSwift (~> 3.4)
   - RxSwift (3.4.0)
@@ -30,6 +31,7 @@ DEPENDENCIES:
   - MJRefresh
   - Moya/RxSwift
   - ReachabilitySwift
+  - Reveal-SDK (~> 4)
   - RxCocoa
   - RxSwift
   - SideMenu
@@ -47,6 +49,7 @@ SPEC CHECKSUMS:
   NVActivityIndicatorView: c7c1c4300b418bd9ed06459e78d4df859ddbe31f
   ReachabilitySwift: f5b9bb30a0777fac8f09ce8b067e32faeb29bb64
   Result: 2453a22e5c5b11c0c3a478736e82cd02f763b781
+  Reveal-SDK: 178c927f1a3230648d3a92b96f6e730a35b2750a
   RxCocoa: d14ef6b6029e1ddc6e966508c09289090de68ff9
   RxSwift: 3789a1af753002a14edecdb698a2424624296a9c
   SideMenu: 2a3c3da0b3d5f78a047b2271bb7398260fcd7e3d
@@ -54,6 +57,6 @@ SPEC CHECKSUMS:
   SVProgressHUD: c404a55d78acbeb7ebb78b76d3faf986475a6994
   Toaster: 77c0b03d78e680bbbab0071c9c7ee392b0034010
 
-PODFILE CHECKSUM: 10f3e5165001f91eb4c7cfbe95220876e07da13f
+PODFILE CHECKSUM: 564b2f8039fd6e93120ad3dc420586fe27658472
 
 COCOAPODS: 1.2.0.beta.1

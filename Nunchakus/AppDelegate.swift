@@ -83,8 +83,8 @@ extension AppDelegate {
         reachability.whenReachable = {[weak self] reachability in
             // this is called on a background thread, but UI updates must
             // be on the main thread, like this:
-            DispatchQueue.main.async {
-            }
+//            DispatchQueue.main.async {
+//            }
             if reachability.isReachableViaWiFi {
                 // wifi
                 self?.netStatus = .wifiNet

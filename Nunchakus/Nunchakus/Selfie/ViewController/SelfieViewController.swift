@@ -346,10 +346,6 @@ extension SelfieViewController: UITableViewDataSource {
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cell = tableView.dequeueReusableCell(withIdentifier: videoCellID) as! VideoCell
         cell.playClosure = {[weak self] in
-            self?.reachabilityAction()
-            if !(self?.isPlayForCellular)! {
-                return
-            }
             if self?.currentIndexPath == indexPath, self?.player.superview != nil {
                 return
             }

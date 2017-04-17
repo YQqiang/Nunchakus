@@ -7,12 +7,12 @@
 //
 
 import UIKit
+import BMPlayer
 
 class FullScreenPlayerController: UIViewController {
 
     override func viewDidLoad() {
         super.viewDidLoad()
-//        emptyDataView.isHidden = true
         // Do any additional setup after loading the view.
     }
 

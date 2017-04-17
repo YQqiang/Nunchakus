@@ -39,6 +39,10 @@ class VideoViewController: BaseViewController {
         return .lightContent
     }
     
+    override var supportedInterfaceOrientations: UIInterfaceOrientationMask {
+        return UIInterfaceOrientationMask.portrait
+    }
+    
     private func setupView() {
         self.automaticallyAdjustsScrollViewInsets = false
         
@@ -82,7 +86,8 @@ extension VideoViewController: ContentCollectionViewDelegate {
         for (i, videoVC) in videoControllers.enumerated() {
             if i != index {
                 if videoVC.isViewLoaded {
-                    videoVC.player.pause()
+                    videoVC.player.prepareToDealloc()
+                    videoVC.player.removeFromSuperview()
                 }
             }
         }

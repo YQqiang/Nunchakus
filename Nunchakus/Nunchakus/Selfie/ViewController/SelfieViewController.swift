@@ -53,49 +53,33 @@ class SelfieViewController: BaseViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        automaticallyAdjustsScrollViewInsets = false
+        view.translatesAutoresizingMaskIntoConstraints = false
+        view.autoresizingMask = .flexibleBottomMargin
         createUI()
         createMJRefresh()
-//        tableView.isUserInteractionEnabled = false
         tableView.mj_header.beginRefreshing()
         setPlayerManager()
         preparePlayer()
+    }
+    
+    override var supportedInterfaceOrientations: UIInterfaceOrientationMask {
+        return UIInterfaceOrientationMask.portrait
     }
     
     override func loadRequestData() {
         tableView.mj_header.beginRefreshing()
     }
     
-    override func viewWillDisappear(_ animated: Bool) {
-        super.viewWillDisappear(animated)
-        if player.isPlaying {
-            player.pause()
-        }
-    }
-    
-    
-    override func viewWillAppear(_ animated: Bool) {
-        super.viewWillAppear(animated)
-        if let visibleIndexPath = tableView.indexPathsForVisibleRows, visibleIndexPath.contains(currentIndexPath) {
-            if !player.isPlaying {
-                player.play()
-            }
-        }
-    }
-    
     deinit {
         player.prepareToDealloc()
     }
-    
-//    override func touchesBegan(_ touches: Set<UITouch>, with event: UIEvent?) {
-//        reachabilityAction()
-//    }
 
 }
 
 // MARK:- private func 
 extension SelfieViewController {
     fileprivate func createUI() {
-        
         tableView.delegate = self
         tableView.dataSource = self
         tableView.rowHeight = UITableViewAutomaticDimension
@@ -108,7 +92,7 @@ extension SelfieViewController {
         tableView.contentOffset = CGPoint(x: 0, y: -8)
         tableView.snp.makeConstraints { (make) in
             make.top.left.right.equalTo(self.view)
-            make.bottom.equalTo(self.view).offset(-148)
+            make.bottom.equalTo(self.view.snp.bottom)
         }
         
         addChildViewController(webViewC)

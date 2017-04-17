@@ -17,9 +17,6 @@ class NewsContentCell: UICollectionViewCell {
             contentView.subviews.forEach { (subView) in
                 subView.removeFromSuperview()
             }
-//            if videoVC.isViewLoaded {
-//                return
-//            }
             contentView.addSubview(videoVC.view)
             videoVC.view.frame = contentView.bounds
         }

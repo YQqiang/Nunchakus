@@ -30,6 +30,8 @@
 		2FC40A7F1E8B839A001C664C /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 2FC40A7E1E8B839A001C664C /* Assets.xcassets */; };
 		2FC9508B1EA0ADE6002F9965 /* PlayerControlView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2FC9508A1EA0ADE6002F9965 /* PlayerControlView.swift */; };
 		2FC9508F1EA0E678002F9965 /* FullScreenPlayerController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2FC9508E1EA0E678002F9965 /* FullScreenPlayerController.swift */; };
+		2FF16ADF1EA4D27B00B2A811 /* License.html in Resources */ = {isa = PBXBuildFile; fileRef = 2FF16ADE1EA4D27B00B2A811 /* License.html */; };
+		2FF16AE11EA4D29A00B2A811 /* LicenseViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2FF16AE01EA4D29A00B2A811 /* LicenseViewController.swift */; };
 		2FF2228E1E86A8B200D2FBCD /* test.html in Resources */ = {isa = PBXBuildFile; fileRef = 2FF2228B1E86A8B200D2FBCD /* test.html */; };
 		2FF2228F1E86A8B200D2FBCD /* jquery-3.1.1.js in Resources */ = {isa = PBXBuildFile; fileRef = 2FF2228C1E86A8B200D2FBCD /* jquery-3.1.1.js */; };
 		2FF222901E86A8B200D2FBCD /* requestURL.js in Resources */ = {isa = PBXBuildFile; fileRef = 2FF2228D1E86A8B200D2FBCD /* requestURL.js */; };
@@ -89,6 +91,8 @@
 		2FC40A7E1E8B839A001C664C /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		2FC9508A1EA0ADE6002F9965 /* PlayerControlView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PlayerControlView.swift; sourceTree = "<group>"; };
 		2FC9508E1EA0E678002F9965 /* FullScreenPlayerController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = FullScreenPlayerController.swift; sourceTree = "<group>"; };
+		2FF16ADE1EA4D27B00B2A811 /* License.html */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.html; path = License.html; sourceTree = "<group>"; };
+		2FF16AE01EA4D29A00B2A811 /* LicenseViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LicenseViewController.swift; sourceTree = "<group>"; };
 		2FF2228B1E86A8B200D2FBCD /* test.html */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.html; path = test.html; sourceTree = "<group>"; };
 		2FF2228C1E86A8B200D2FBCD /* jquery-3.1.1.js */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.javascript; path = "jquery-3.1.1.js"; sourceTree = "<group>"; };
 		2FF2228D1E86A8B200D2FBCD /* requestURL.js */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.javascript; path = requestURL.js; sourceTree = "<group>"; };
@@ -141,6 +145,7 @@
 			isa = PBXGroup;
 			children = (
 				2F283AA91E977BDA00D325D9 /* ProfileViewController.swift */,
+				2FF16AE01EA4D29A00B2A811 /* LicenseViewController.swift */,
 			);
 			path = ViewController;
 			sourceTree = "<group>";
@@ -171,6 +176,7 @@
 		2F77C4141E80F1230055D364 /* Nunchakus */ = {
 			isa = PBXGroup;
 			children = (
+				2FF16ADE1EA4D27B00B2A811 /* License.html */,
 				2F77C4151E80F1230055D364 /* AppDelegate.swift */,
 				2FC40A7E1E8B839A001C664C /* Assets.xcassets */,
 				2F77C4211E80F1230055D364 /* Info.plist */,
@@ -531,6 +537,7 @@
 			files = (
 				2FF2228F1E86A8B200D2FBCD /* jquery-3.1.1.js in Resources */,
 				2FF2228E1E86A8B200D2FBCD /* test.html in Resources */,
+				2FF16ADF1EA4D27B00B2A811 /* License.html in Resources */,
 				2FF222901E86A8B200D2FBCD /* requestURL.js in Resources */,
 				2FC40A7F1E8B839A001C664C /* Assets.xcassets in Resources */,
 			);
@@ -627,6 +634,7 @@
 				2F89F9F31E965ED1007C4658 /* NewsContentCell.swift in Sources */,
 				2F185BB41E8212B200EDD62B /* EmptyDataView.swift in Sources */,
 				C707A3951E814FBC00278E40 /* BaseNavigationController.swift in Sources */,
+				2FF16AE11EA4D29A00B2A811 /* LicenseViewController.swift in Sources */,
 				C717B0FD1E82C2A600B99D59 /* Common.swift in Sources */,
 				2F185BBC1E82271F00EDD62B /* VideoService.swift in Sources */,
 				2F962FB01E965CC2005C91DF /* VideoViewController.swift in Sources */,

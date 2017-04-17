@@ -18,7 +18,7 @@ class ProfileViewController: BaseViewController {
     fileprivate lazy var iconImageV: UIImageView = UIImageView()
     fileprivate lazy var tableView: UITableView = UITableView(frame: CGRect.zero, style: .grouped)
     fileprivate var dataItems: [[String]] = {
-       return [["清除缓存"], ["关于", "反馈", "联系作者"]]
+       return [["清除缓存"], ["关于", "反馈", "联系作者", "开源组件"]]
     }()
     
     override func viewDidLoad() {
@@ -76,11 +76,15 @@ extension ProfileViewController: UITableViewDelegate {
             break
             
         case (1, 0):
-            navigationController?.pushViewController(LicenseViewController(), animated: true)
+            let alertVC = UIAlertController(title: NSLocalizedString("说明", comment: ""), message: NSLocalizedString("该APP中所有视频资源均来自双截棍8（www.sjg8.com）, 感谢双节棍8站长的支持", comment: ""), preferredStyle: .alert)
+            let cancel = UIAlertAction(title: NSLocalizedString("确定", comment: ""), style: .cancel, handler: nil)
+            alertVC.addAction(cancel)
+            present(alertVC, animated: true, completion: nil)
+
             break
             
         case (1, 1):
-            let alertVC = UIAlertController(title: NSLocalizedString("感谢您的反馈", comment: ""), message: NSLocalizedString("请联系作者, 进行反馈", comment: ""), preferredStyle: .alert)
+            let alertVC = UIAlertController(title: NSLocalizedString("感谢您的支持", comment: ""), message: NSLocalizedString("请直接联系作者, 进行问题反馈", comment: ""), preferredStyle: .alert)
             let cancel = UIAlertAction(title: NSLocalizedString("确定", comment: ""), style: .cancel, handler: nil)
             alertVC.addAction(cancel)
             present(alertVC, animated: true, completion: nil)
@@ -92,6 +96,11 @@ extension ProfileViewController: UITableViewDelegate {
             alertVC.addAction(cancel)
             present(alertVC, animated: true, completion: nil)
             break
+            
+        case (1, 3):
+            navigationController?.pushViewController(LicenseViewController(), animated: true)
+            break
+
             
         default:
             break

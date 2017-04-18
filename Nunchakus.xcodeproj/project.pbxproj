@@ -22,6 +22,8 @@
 		2F77C4161E80F1230055D364 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2F77C4151E80F1230055D364 /* AppDelegate.swift */; };
 		2F77C42B1E80F1230055D364 /* NunchakusTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2F77C42A1E80F1230055D364 /* NunchakusTests.swift */; };
 		2F77C4361E80F1230055D364 /* NunchakusUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2F77C4351E80F1230055D364 /* NunchakusUITests.swift */; };
+		2F8057A11EA5B16E00562CEE /* ScrollTitleViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2F8057A01EA5B16E00562CEE /* ScrollTitleViewController.swift */; };
+		2F8057A31EA5B18F00562CEE /* ScaleTitleLabel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2F8057A21EA5B18F00562CEE /* ScaleTitleLabel.swift */; };
 		2F89F9F31E965ED1007C4658 /* NewsContentCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2F89F9F21E965ED1007C4658 /* NewsContentCell.swift */; };
 		2F962FB01E965CC2005C91DF /* VideoViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2F962FAF1E965CC2005C91DF /* VideoViewController.swift */; };
 		2F962FB31E965D30005C91DF /* HeaderView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2F962FB11E965D30005C91DF /* HeaderView.swift */; };
@@ -83,6 +85,8 @@
 		2F77C4311E80F1230055D364 /* NunchakusUITests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = NunchakusUITests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		2F77C4351E80F1230055D364 /* NunchakusUITests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NunchakusUITests.swift; sourceTree = "<group>"; };
 		2F77C4371E80F1230055D364 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		2F8057A01EA5B16E00562CEE /* ScrollTitleViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ScrollTitleViewController.swift; sourceTree = "<group>"; };
+		2F8057A21EA5B18F00562CEE /* ScaleTitleLabel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ScaleTitleLabel.swift; sourceTree = "<group>"; };
 		2F89F9F21E965ED1007C4658 /* NewsContentCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = NewsContentCell.swift; sourceTree = "<group>"; };
 		2F962FAF1E965CC2005C91DF /* VideoViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = VideoViewController.swift; sourceTree = "<group>"; };
 		2F962FB11E965D30005C91DF /* HeaderView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = HeaderView.swift; sourceTree = "<group>"; };
@@ -202,6 +206,15 @@
 			path = NunchakusUITests;
 			sourceTree = "<group>";
 		};
+		2F80579F1EA5B12B00562CEE /* ScrollTitleViewController */ = {
+			isa = PBXGroup;
+			children = (
+				2F8057A01EA5B16E00562CEE /* ScrollTitleViewController.swift */,
+				2F8057A21EA5B18F00562CEE /* ScaleTitleLabel.swift */,
+			);
+			name = ScrollTitleViewController;
+			sourceTree = "<group>";
+		};
 		2FF2228A1E86A89E00D2FBCD /* js */ = {
 			isa = PBXGroup;
 			children = (
@@ -313,6 +326,7 @@
 		C707A37E1E814EE400278E40 /* Selfie */ = {
 			isa = PBXGroup;
 			children = (
+				2F80579F1EA5B12B00562CEE /* ScrollTitleViewController */,
 				2FF2228A1E86A89E00D2FBCD /* js */,
 				C707A37F1E814EE400278E40 /* Model */,
 				C707A3801E814EE400278E40 /* ViewController */,
@@ -636,8 +650,10 @@
 				C707A3951E814FBC00278E40 /* BaseNavigationController.swift in Sources */,
 				2FF16AE11EA4D29A00B2A811 /* LicenseViewController.swift in Sources */,
 				C717B0FD1E82C2A600B99D59 /* Common.swift in Sources */,
+				2F8057A31EA5B18F00562CEE /* ScaleTitleLabel.swift in Sources */,
 				2F185BBC1E82271F00EDD62B /* VideoService.swift in Sources */,
 				2F962FB01E965CC2005C91DF /* VideoViewController.swift in Sources */,
+				2F8057A11EA5B16E00562CEE /* ScrollTitleViewController.swift in Sources */,
 				C707A3991E81504500278E40 /* UIImage-Extension.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

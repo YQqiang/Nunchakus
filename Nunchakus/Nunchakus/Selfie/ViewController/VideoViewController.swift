@@ -46,8 +46,6 @@ class VideoViewController: BaseViewController {
         } else {
             contentCollectionView.delegate = self
         }
-        contentCollectionView(contentCollectionView, didShowViewWith: currentIndex)
-        categoryHeaderView(headerView: headerView, selectedIndex: currentIndex)
     }
     
     override func viewWillLayoutSubviews() {
@@ -116,7 +114,7 @@ extension VideoViewController: HeaderViewDelegate {
             }
         }
         currentIndex = selectedIndex
-        contentCollectionView.reloadData()
+//        contentCollectionView.reloadData()
     }
 }
 
@@ -132,7 +130,7 @@ extension VideoViewController: ContentCollectionViewDelegate {
             }
         }
         currentIndex = index
-        contentCollectionView.reloadData()
+//        contentCollectionView.reloadData()
     }
     
     func contentCollectionView(_ contentView: ContentCollectionView, didScrollFrom fromIndex: Int, to toIndex: Int, scale: Float) {

@@ -17,6 +17,7 @@ class ProfileViewController: BaseViewController {
 
     fileprivate lazy var iconImageV: UIImageView = UIImageView()
     fileprivate lazy var tableView: UITableView = UITableView(frame: CGRect.zero, style: .grouped)
+    fileprivate var firstScroll: Bool = true
     fileprivate var dataItems: [[String]] = {
        return [["清除缓存"], ["关于", "反馈", "联系作者", "开源组件"]]
     }()
@@ -37,9 +38,11 @@ extension ProfileViewController {
         iconImageV.frame = CGRect(x: 0, y: -imageHeight, width: UIScreen.main.bounds.size.width, height: imageHeight)
         iconImageV.contentMode = .scaleAspectFill
         tableView.contentInset = UIEdgeInsetsMake(imageHeight, 0, 0, 0)
+        tableView.contentOffset.y = -imageHeight
         view.addSubview(tableView)
         tableView.delegate = self
         tableView.dataSource = self
+        tableView.showsVerticalScrollIndicator = false
         tableView.register(UITableViewCell.self, forCellReuseIdentifier: cellID)
         tableView.snp.makeConstraints { (make) in
             make.edges.equalToSuperview()
@@ -51,7 +54,7 @@ extension ProfileViewController {
 extension ProfileViewController: UITableViewDelegate {
     func scrollViewDidScroll(_ scrollView: UIScrollView) {
         let offsetY = scrollView.contentOffset.y
-        if offsetY < -imageHeight {
+        if offsetY < -imageHeight, scrollView == tableView {
             iconImageV.frame = CGRect(x: iconImageV.frame.origin.x, y: offsetY, width: iconImageV.frame.width, height: -offsetY)
         }
     }

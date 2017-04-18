@@ -46,7 +46,7 @@ class SelfieViewController: BaseViewController {
         }
         return appDelegate.netStatus
     }
-    
+    var willShowFullScreen: Bool = false
     var player: BMPlayer!
     
     let disposeBag = DisposeBag()
@@ -157,6 +157,7 @@ extension SelfieViewController {
                     make.right.equalTo((self?.fullScreenVC.view.snp.right)!)
                     make.height.equalTo((self?.fullScreenVC.view.snp.width)!).multipliedBy(9.0/16.0)
                 }
+                self?.willShowFullScreen = true
                 self?.present(fullScreenVC, animated: true, completion: nil)
             } else if !isFullScreen, let _ = self?.fullScreenVC.presentingViewController {
                 self?.fullScreenVC.dismiss(animated: true, completion: nil)

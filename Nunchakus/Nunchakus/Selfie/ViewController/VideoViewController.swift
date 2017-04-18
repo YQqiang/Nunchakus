@@ -12,6 +12,7 @@ class VideoViewController: BaseViewController {
 
     fileprivate var headerView: HeaderView!
     fileprivate var contentCollectionView: ContentCollectionView!
+    fileprivate var currentIndex = 0
     
     lazy var categories: [String] = {
         return ["棍友自拍", "舞台表演", "棍法教学", "媒体关注", "影视动画", "国外聚焦", "极限跑酷"]
@@ -32,6 +33,37 @@ class VideoViewController: BaseViewController {
             addChildViewController(videoC)
             videoC.videoType = videoTypes[index]
             videoControllers.append(videoC)
+        }
+    }
+    
+    override func viewWillAppear(_ animated: Bool) {
+        super.viewWillAppear(animated)
+        if let _ = contentCollectionView.dataSource {
+        } else {
+            contentCollectionView.dataSource = self
+        }
+        if let _ = contentCollectionView.delegate {
+        } else {
+            contentCollectionView.delegate = self
+        }
+        contentCollectionView(contentCollectionView, didShowViewWith: currentIndex)
+        categoryHeaderView(headerView: headerView, selectedIndex: currentIndex)
+    }
+    
+    override func viewWillLayoutSubviews() {
+        super.viewWillLayoutSubviews()
+        var willShowFull = false
+        for (_, videoVC) in videoControllers.enumerated() {
+            if videoVC.willShowFullScreen {
+                willShowFull = true
+                videoVC.willShowFullScreen = false
+                break
+            }
+        }
+        
+        if willShowFull {
+            contentCollectionView.dataSource = nil
+            contentCollectionView.delegate = nil
         }
     }
     
@@ -60,8 +92,6 @@ class VideoViewController: BaseViewController {
         
         do {
             contentCollectionView = ContentCollectionView()
-            contentCollectionView.dataSource = self
-            contentCollectionView.delegate = self
             contentCollectionView.register(cellClass: NewsContentCell.self, forCellWithReuseIdentifier: "cell")
             view.addSubview(contentCollectionView)
             contentCollectionView.snp.makeConstraints({ (make) in
@@ -77,6 +107,16 @@ extension VideoViewController: HeaderViewDelegate {
         let indexPath = IndexPath(item: selectedIndex, section: 0)
         contentCollectionView.scrollAffectToNoOnce()
         contentCollectionView.scrollToItem(at: indexPath, at: .centeredHorizontally, animated: false)
+        for (i, videoVC) in videoControllers.enumerated() {
+            if i != selectedIndex {
+                if videoVC.isViewLoaded {
+                    videoVC.player.prepareToDealloc()
+                    videoVC.player.removeFromSuperview()
+                }
+            }
+        }
+        currentIndex = selectedIndex
+        contentCollectionView.reloadData()
     }
 }
 
@@ -91,6 +131,8 @@ extension VideoViewController: ContentCollectionViewDelegate {
                 }
             }
         }
+        currentIndex = index
+        contentCollectionView.reloadData()
     }
     
     func contentCollectionView(_ contentView: ContentCollectionView, didScrollFrom fromIndex: Int, to toIndex: Int, scale: Float) {
@@ -104,14 +146,8 @@ extension VideoViewController: ContentCollectionViewDataSource {
     }
     
     func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
-        var cell = collectionView.dequeueReusableCell(withReuseIdentifier: "cell", for: indexPath) as? NewsContentCell
+        let cell = collectionView.dequeueReusableCell(withReuseIdentifier: "cell", for: indexPath) as? NewsContentCell
         
-        if let cell = cell {
-            cell.videoVC = videoControllers[indexPath.item]
-            return cell
-        }
-        
-        cell = NewsContentCell()
         cell!.videoVC = videoControllers[indexPath.item]
         return cell!
     }

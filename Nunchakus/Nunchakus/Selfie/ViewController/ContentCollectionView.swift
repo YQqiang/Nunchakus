@@ -23,8 +23,24 @@ protocol ContentCollectionViewDataSource: NSObjectProtocol {
 }
 
 class ContentCollectionView: UIView {
-    weak var delegate: ContentCollectionViewDelegate?
-    weak var dataSource: ContentCollectionViewDataSource?
+    weak var delegate: ContentCollectionViewDelegate? {
+        didSet {
+            if let _ = delegate {
+                collectionView.delegate = self
+            } else {
+                collectionView.delegate = nil
+            }
+        }
+    }
+    weak var dataSource: ContentCollectionViewDataSource? {
+        didSet {
+            if let _ = dataSource {
+                collectionView.dataSource = self
+            } else {
+                collectionView.dataSource = nil
+            }
+        }
+    }
     
     fileprivate var collectionView: UICollectionView!
     fileprivate var currentOffsetX: Float = 0.0
@@ -77,6 +93,10 @@ class ContentCollectionView: UIView {
         collectionView.scrollToItem(at: indexPath, at: scrollPosition, animated: animated)
     }
     
+    func reloadData() {
+        collectionView.reloadData()
+    }
+    
     private func setupViews() {
         let flowLayout = UICollectionViewFlowLayout()
         flowLayout.minimumLineSpacing = 0
@@ -87,8 +107,6 @@ class ContentCollectionView: UIView {
         collectionView.collectionViewLayout = flowLayout
         collectionView.register(UICollectionViewCell.self, forCellWithReuseIdentifier: "cell")
         collectionView.backgroundColor = .white
-        collectionView.dataSource = self
-        collectionView.delegate = self
         collectionView.isPagingEnabled = true
         collectionView.showsVerticalScrollIndicator = false
         collectionView.showsHorizontalScrollIndicator = false
@@ -168,7 +186,9 @@ extension ContentCollectionView: UIScrollViewDelegate {
             return
         }
 
-        delegate?.contentCollectionView(self, didShowViewWith: toIndex)
+        if let _ = collectionView.dataSource, let _ = collectionView.delegate {
+            delegate?.contentCollectionView(self, didShowViewWith: toIndex)
+        }
     }
 
 }

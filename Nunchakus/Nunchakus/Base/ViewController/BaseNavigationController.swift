@@ -38,7 +38,7 @@ class BaseNavigationController: UINavigationController {
         
         navigationBar.isTranslucent = false
         /// 只要自定义导航栏左边的按钮, 右滑删除控制器的功能就没了,需要把delegate设置为nil, 让系统重新设置
-        //        interactivePopGestureRecognizer?.delegate = nil
+        interactivePopGestureRecognizer?.delegate = nil
     }
     
     /// 在push之前拦截所有控制器, 然后自定义返回按钮

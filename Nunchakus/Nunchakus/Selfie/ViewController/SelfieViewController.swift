@@ -136,7 +136,6 @@ extension SelfieViewController {
     fileprivate func preparePlayer() {
         let playerControlView = PlayerControlView()
         playerControlView.fullScreenBlock = {[weak self] (isFullScreen) in
-            print("全屏或缩放----\(isFullScreen)")
             guard let player = self?.player else {
                 return
             }

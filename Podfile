@@ -6,7 +6,7 @@ use_frameworks!
 
 pod 'SnapKit'
 pod 'SVProgressHUD'
-pod 'SideMenu'
+#pod 'SideMenu'
 pod 'MJRefresh'
 pod 'Kanna'
 pod 'Toaster'

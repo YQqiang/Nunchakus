@@ -20,8 +20,8 @@ class PlayerControlView: BMPlayerControlView {
      */
     override func customizeUIComponents() {
         mainMaskView.backgroundColor   = UIColor.clear
-//        topMaskView.backgroundColor    = UIColor.black.withAlphaComponent(0.4)
-//        bottomMaskView.backgroundColor = UIColor.black.withAlphaComponent(0.4)
+        topMaskView.backgroundColor    = UIColor.black.withAlphaComponent(0.75)
+        bottomMaskView.backgroundColor = UIColor.black.withAlphaComponent(0.75)
         
         topMaskView.addSubview(playbackRateButton)
         
@@ -36,6 +36,7 @@ class PlayerControlView: BMPlayerControlView {
         playbackRateButton.snp.makeConstraints {
             $0.right.equalTo(chooseDefitionView.snp.left).offset(-5)
             $0.centerY.equalTo(chooseDefitionView)
+            $0.left.equalTo(titleLabel.snp.right).offset(8)
         }
     }
     

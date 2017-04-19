@@ -297,7 +297,7 @@ extension SelfieViewController: UITableViewDelegate {
         
         if currentIndexPath == indexPath {
             // 当前cell需要播放视屏
-            if (view as? BMPlayer) == nil {
+            if (view as? BMPlayer) == nil, player.avPlayer != nil {
                 videoCell.bgView.addSubview(player)
                 player.snp.remakeConstraints { (make) in
                     make.edges.equalTo(videoCell.imgV)
@@ -360,7 +360,6 @@ extension SelfieViewController: UITableViewDataSource {
             videoService.request(.video(type: .v, page: Int(videoNum ?? "0") ?? 0)).mapString().showAPIErrorToast().subscribe(onNext: {[weak self] (html) in
                 if let doc = HTML(html: html, encoding: .utf8) {
                     let iframe = doc.at_xpath("//div[@class='playbox']/div[@class='wrap']/div[@class='play']/div[@id='a3']/iframe")
-                    print("iframe = \(iframe?.toHTML)")
                     if let src = iframe?["src"]?.components(separatedBy: "/").last {
                         print("src = \(src)")
                         self?.webViewC.v_id = src

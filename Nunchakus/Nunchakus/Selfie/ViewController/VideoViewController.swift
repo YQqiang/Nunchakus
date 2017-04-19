@@ -48,6 +48,14 @@ class VideoViewController: BaseViewController {
         }
     }
     
+    override func viewDidAppear(_ animated: Bool) {
+        super.viewDidAppear(animated)
+        if currentIndex == videoControllers.count - 1 {
+            headerView.delegate?.categoryHeaderView(headerView: headerView, selectedIndex: currentIndex)
+            headerView.selectTitle(of: currentIndex)
+        }
+    }
+    
     override func viewWillLayoutSubviews() {
         super.viewWillLayoutSubviews()
         var willShowFull = false

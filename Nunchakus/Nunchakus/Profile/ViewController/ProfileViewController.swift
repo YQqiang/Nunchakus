@@ -79,7 +79,7 @@ extension ProfileViewController: UITableViewDelegate {
             break
             
         case (1, 0):
-            let alertVC = UIAlertController(title: NSLocalizedString("说明", comment: ""), message: NSLocalizedString("该APP中所有视频资源均来自双截棍8（www.sjg8.com）, 感谢双节棍8站长的支持", comment: ""), preferredStyle: .alert)
+            let alertVC = UIAlertController(title: NSLocalizedString("说明", comment: ""), message: NSLocalizedString("该APP中所有视频资源均来自双节棍吧(www.sjg8.com), 感谢双节棍吧站长的支持", comment: ""), preferredStyle: .alert)
             let cancel = UIAlertAction(title: NSLocalizedString("确定", comment: ""), style: .cancel, handler: nil)
             alertVC.addAction(cancel)
             present(alertVC, animated: true, completion: nil)

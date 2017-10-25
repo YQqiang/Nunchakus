@@ -9,25 +9,25 @@
 import UIKit
 
 class BaseNavigationController: UINavigationController {
-    
+    /*
     /// 这个类第一次被创建时调用,且只调用一次
-    override class func initialize() {
+    func initialize() {
         /// 1. 设置导航栏 UINavigationBar
         let navBar = UINavigationBar.appearance()
-        navBar.titleTextAttributes = [NSFontAttributeName: UIFont.systemFont(ofSize: 18), NSForegroundColorAttributeName: UIColor.globalColor()]
+        navBar.titleTextAttributes = [NSAttributedStringKey.font: UIFont.systemFont(ofSize: 18), NSAttributedStringKey.foregroundColor: UIColor.globalColor()]
 //        navBar.tintColor = UIColor.color(0xeeeeee)
         navBar.setBackgroundImage(#imageLiteral(resourceName: "navbar-bg"), for: UIBarMetrics.default)
         /// 2. 设置 UIBarButtonItem
         let barButtonItem = UIBarButtonItem.appearance()
-        var normalItemDic: [String: Any] = [String: Any]()
-        normalItemDic[NSFontAttributeName] = UIFont.systemFont(ofSize: 15)
-        normalItemDic[NSForegroundColorAttributeName] = UIColor.globalColor()
+        var normalItemDic: [NSAttributedStringKey: Any] = [NSAttributedStringKey: Any]()
+        normalItemDic[NSAttributedStringKey.font] = UIFont.systemFont(ofSize: 15)
+        normalItemDic[NSAttributedStringKey.foregroundColor] = UIColor.globalColor()
         barButtonItem.setTitleTextAttributes(normalItemDic, for: .normal)
         
-        var disabledItemDic: [String: Any] = [String: Any]()
-        disabledItemDic[NSForegroundColorAttributeName] = UIColor.globalColor()
+        var disabledItemDic: [NSAttributedStringKey: Any] = [NSAttributedStringKey: Any]()
+        disabledItemDic[NSAttributedStringKey.foregroundColor] = UIColor.globalColor()
         barButtonItem.setTitleTextAttributes(disabledItemDic, for: .disabled)
-    }
+    }*/
     
     override var preferredStatusBarStyle: UIStatusBarStyle {
         return .lightContent

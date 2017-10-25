@@ -55,6 +55,6 @@ class BaseViewController: UIViewController {
 }
 
 extension BaseViewController {
-    func loadRequestData() {
+    @objc func loadRequestData() {
     }
 }

@@ -16,7 +16,7 @@ class ScaleTitleLabel: UILabel {
             let newRed = red + (1.0 - red) * scale
             let newGreen = green + (0.0 - green) * scale
             let newBlue = blue + (0.0 - blue) * scale
-            textColor = UIColor(colorLiteralRed: Float(newRed), green: Float(newGreen), blue: Float(newBlue), alpha: 1.0)
+            textColor = UIColor(red: CGFloat(newRed), green: CGFloat(newGreen), blue: CGFloat(newBlue), alpha: 1.0)
             
             let fontSize = 1.0 + scale * 0.3
             transform = CGAffineTransform.init(scaleX: CGFloat(fontSize), y: CGFloat(fontSize))
@@ -32,7 +32,7 @@ class ScaleTitleLabel: UILabel {
         font = UIFont.systemFont(ofSize: 15)
         textAlignment = .center
         backgroundColor = UIColor.clear
-        textColor = UIColor(colorLiteralRed: Float(red), green: Float(green), blue: Float(blue), alpha: 1.0)
+        textColor = UIColor(red: CGFloat(red), green: CGFloat(green), blue: CGFloat(blue), alpha: 1.0)
         isUserInteractionEnabled = true
     }
     

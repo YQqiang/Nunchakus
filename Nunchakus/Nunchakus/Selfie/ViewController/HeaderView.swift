@@ -120,7 +120,7 @@ private class CategoryScrollView: UIScrollView {
         }
     }
     
-    func buttonClicked(sender: UIButton) {
+    @objc func buttonClicked(sender: UIButton) {
         selectButton(withFrom: currentIndex, to: sender.tag)
         categoryDelegate?.categoryScrollView(scrollView: self, selectedButtonIndex: sender.tag)
     }

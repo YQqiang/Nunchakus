@@ -1,6 +1,6 @@
 # Nunchakus
 
-## 简书地址[Nunchakus -- 个人APP](http://www.jianshu.com/p/d322f3f85d7e), 一些关于此App的技术点总结和填坑笔记
+## 博客地址[Nunchakus -- 个人APP](http://yuqiangcoder.com/2017/04/19/Nunchakus-%E4%B8%AA%E4%BA%BAAPP.html), 一些关于此App的技术点总结和填坑笔记
 
 ## 抓取网页[双节棍吧](http://www.sjg8.com/)中的内容, 解析优酷视频地址.
 
